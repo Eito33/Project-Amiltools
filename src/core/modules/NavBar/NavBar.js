@@ -1,26 +1,25 @@
-//Import React
-import React, {Component, Fragment} from 'react';
+import React, { Fragment } from 'react'
+import {Link} from 'react-router-dom';
 
-//Import Router
-import {Link} from 'react-router-dom'
+const NavBar = () => {
 
-//Import CSS
-import './NavBar.css'
+    return(
+        <Fragment>
+            <header>
+                <nav className="navbar navbar-dark bg-dark justify-content-between">
+                    <Link to='/' className="navbar-brand">AmilTools</Link>
 
-
-class NavBar extends Component{
-    render(){
-        return(
-            <Fragment>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about">About</Link></li>
-                    </ul>
+                    <form className="form-inline">
+                        <Link to="/notfound/"><i className="nav-account-icon fas fa-book"></i></Link>
+                        <Link to="/user/"><i className="nav-account-icon fas fa-user"></i></Link>
+                        
+                        <input disabled id="disabledInput" className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-info my-2 my-sm-0 disabled" type="submit">Search</button>
+                    </form>
                 </nav>
-            </Fragment>
-        )
-    }
+            </header>
+        </Fragment>
+    )
 }
 
-export default NavBar;
+export default NavBar

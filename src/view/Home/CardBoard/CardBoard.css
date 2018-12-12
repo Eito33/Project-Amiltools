@@ -1,0 +1,98 @@
+/* CARDS */
+
+.borderCardTop{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 3em;
+    padding-left: 20px;
+    color: white;
+    box-shadow: 3px 0px 5px #aaa;
+    min-height: 100px;
+    line-height: 100px;
+}
+
+.borderCardTop>p>span{
+    float: right;
+    padding-right: 20px;
+}
+
+.borderCardBot{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-weight: 500;
+    padding: 15px;
+    box-shadow: 3px 3px 5px #aaa;
+    max-height: 50px;
+}
+
+.borderCardBot>p>a{
+    text-decoration: none;
+}
+
+.borderCardBot>p>a>i{
+    float: right;
+    padding-right: 20px;
+    line-height: 25px;
+}
+
+/*
+    Report CARD
+*/
+.reportCardTop{
+    background-color: #337ab7;
+    border: 1px solid #2c689c;
+}
+.reportCardBot{
+    background-color: #f8f8f8;
+    border: 1px solid #2c689c;
+}
+
+.reportCardBot>p>a{
+    color: #2c689c;
+}
+
+.reportCardBot>p>a:hover{
+    color: #337ab7;
+}
+
+
+/*
+    Bug CARD
+*/
+.bugCardTop{
+    background-color: #f0ad4e;
+    border: 1px solid #ed9e2f;
+}
+.bugCardBot{
+    background-color: #f8f8f8;
+    border: 1px solid #ed9e2f;
+}
+
+.bugCardBot>p>a{
+    color: #ed9e2f;
+}
+
+.bugCardBot>p>a:hover{
+    color: #f0ad4e;
+}
+
+
+/*
+    Task CARD
+*/
+.taskCardTop{
+    background-color: #5cb85c;
+    border: 1px solid #49a949;
+}
+.taskCardBot{
+    background-color: #f8f8f8;
+    border: 1px solid #49a949;
+}
+
+.taskCardBot>p>a{
+    color: #49a949;
+}
+
+.taskCardBot>p>a:hover{
+    color: #5cb85c;
+}

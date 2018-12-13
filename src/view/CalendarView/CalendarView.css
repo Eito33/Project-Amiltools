@@ -1,0 +1,25 @@
+
+.borderCaseSemaine{
+    min-height: 25px;
+    min-width: 150px;
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.borderCaseJour{
+    min-height: 100px;
+    min-width: 150px;
+    background-color: white;
+    border: 1px solid #e7e7e7;
+}
+
+.borderCaseJour:hover{
+    background-color: rgba(23, 162, 184, 0.2);
+}
+
+.calendarAlign{
+    display: flex;
+    justify-content: center;
+}

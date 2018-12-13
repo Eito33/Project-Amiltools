@@ -1,21 +1,35 @@
-//Import React
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+
+//Import All View
+import Home from '../view/Home/Home';
 
 //Import Router
-import { Switch, Route } from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom';
+import NotFound from './modules/NotFound/NotFound'
 
+//Import Component
+import UserComponent from './components/UserComponent/UserComponent';
+import ReportComponent from './components/ReportComponent/ReportComponent';
+import BugTrackerComponent from './components/BugTrackerComponent/BugTrackerComponent';
+import CalendarComponent from '../core/components/CalendarComponent/CalendarComponent';
+import TaskComponent from '../core/components/TaskComponent/TaskComponent';
 
-//Import All Components
-import Home from '../view/Home/Home'
-import About from '../view/About/About'
-
-const Router = () => {
-    return(
-            <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-            </Switch>
+class Router extends Component {
+    render() {
+        return(
+            <Fragment>
+                <Switch>
+                    <Route exact path='/' component={Home} />
+                    <Route exact path='/calendar/' component={CalendarComponent} />
+                    <Route exact path='/report/' component={ReportComponent} />
+                    <Route exact path='/task/' component={TaskComponent} />
+                    <Route exact path='/bugtracker/' component={BugTrackerComponent} />
+                    <Route exact path='/user/' component={UserComponent} />
+                    <Route component={NotFound} />
+                </Switch>
+            </Fragment>
         )
+    }
 }
 
-export default Router;
+export default Router

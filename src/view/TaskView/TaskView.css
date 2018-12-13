@@ -1,0 +1,106 @@
+.iconTask{
+    text-align: center;
+}
+
+#divhidden{
+    padding: 50px;
+    position: absolute;
+    min-width: 90%;
+    top: 15%; left: 50%;
+    transform: translate(-50%, -15%); 
+    display: none;
+}
+
+.contentTask{
+    background-color: white;
+    padding: 25px;
+    color: black;
+    min-height: 200px;
+    border-left: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: justify;
+    box-shadow: 6px 6px 5px #aaa;
+}
+
+.taskFormButton>button{
+    margin-right: 25px;
+}
+
+.titleTask{
+    background-color: #f8f8f8;
+    font-weight: 500;
+    color: black;
+    padding: 5px;
+    border: 1px solid #e7e7e7;
+}
+
+.titleTask>.closeItem{
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #DC3545;
+}
+
+
+.iconView{
+    color: #17A2B8;  
+}
+
+.iconEdit{
+    color: #FFC107;   
+}
+
+.iconDelete{
+    color: #DC3545;   
+}
+
+.iconCheck{
+    color: #28A745;
+}
+
+.lowPriority{
+    color: #28A745;
+    font-weight: bold;
+}
+
+.mediumPriority{
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.highPriority{
+    color: #DC3545;
+    font-weight: bold;
+}
+
+.iconTask>a>i{
+    margin-right: 10px;
+}
+
+.priorityGreen{
+    background-color: #28A745;
+    color: white;
+    font-weight: 500;
+}
+
+.priorityOrange{
+    background-color: #FFC107;
+    color: white;
+    font-weight: 500;
+}
+
+.priorityRed{
+    background-color: brown;
+    color: white;
+    font-weight: 500;
+}
+
+
+th{
+    font-weight: bold;
+}
+
+td{
+    font-weight: 400;
+}

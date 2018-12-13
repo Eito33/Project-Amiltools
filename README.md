@@ -1,12 +1,12 @@
-# AmilTool's - `V. 0.a Master`
+# AmilTool's - `V. 0.a Dev`
 ![ImageLOAD](http://image.noelshack.com/fichiers/2018/50/4/1544740136-amiltools.png)
 
 ## SOMMAIRE : 
 
-* [Général](https://github.com/Eito33/Project-Phantom#1-général)
-* [Fonctions](https://github.com/Eito33/Project-Phantom#2-fonctions)
-* [Logiciels](https://github.com/Eito33/Project-Phantom#3-logiciels)
-* [Changelog](https://github.com/Eito33/Project-Phantom#3-changelog)
+* [Général](https://github.com/Eito33/Project-Phantom/tree/dev#1-g%C3%A9n%C3%A9ral)
+* [Fonctions](https://github.com/Eito33/Project-Phantom/tree/dev#2-fonctions)
+* [Logiciels](https://github.com/Eito33/Project-Phantom/tree/dev#3-logiciels)
+* [Changelog](https://github.com/Eito33/Project-Phantom/tree/dev#3-changelog)
 
 
 ------------------------------
@@ -218,4 +218,4 @@ La documentation est une page GitBook qui retranscrit l'ensemble de ce manuel et
 
 ## 3. Changelog
 
-Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/master/changelog/changelog-12-12-2018-(0.a).txt) 
+Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/dev/changelog/changelog-13-12-2018-(0.b).txt) 

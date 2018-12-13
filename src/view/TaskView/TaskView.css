@@ -3,38 +3,58 @@
 }
 
 .iconView{
-    color: cornflowerblue;  
+    color: #17A2B8;  
 }
 
 .iconEdit{
-    color: coral;   
+    color: #FFC107;   
 }
 
 .iconDelete{
-    color: brown;   
+    color: #DC3545;   
+}
+
+.iconCheck{
+    color: #28A745;
+}
+
+.lowPriority{
+    color: #28A745;
+    font-weight: bold;
+}
+
+.mediumPriority{
+    color: #FFC107;
+    font-weight: bold;
+}
+
+.highPriority{
+    color: #DC3545;
+    font-weight: bold;
 }
 
 .iconTask>a>i{
     margin-right: 10px;
 }
 
-.taskGreen{
-    background-color: darkgreen;
+.priorityGreen{
+    background-color: #28A745;
     color: white;
     font-weight: 500;
 }
 
-.taskOrange{
-    background-color: coral;
+.priorityOrange{
+    background-color: #FFC107;
     color: white;
     font-weight: 500;
 }
 
-.taskRed{
+.priorityRed{
     background-color: brown;
     color: white;
     font-weight: 500;
 }
+
 
 th{
     font-weight: bold;

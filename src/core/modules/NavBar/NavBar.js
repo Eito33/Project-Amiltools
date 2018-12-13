@@ -10,7 +10,7 @@ const NavBar = () => {
                     <Link to='/' className="navbar-brand">AmilTools</Link>
 
                     <form className="form-inline">
-                        <Link to="/notfound/"><i className="nav-account-icon fas fa-book"></i></Link>
+                        <a href="https://project-manager-eito.gitbook.io/amiltools-app/" target="_blank"><i className="nav-account-icon fas fa-book"></i></a>
                         <Link to="/user/"><i className="nav-account-icon fas fa-user"></i></Link>
                         
                         <input disabled id="disabledInput" className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

@@ -5,7 +5,15 @@ import './TaskView.css'
 
 import MenuLeftTask from '../TaskView/MenuLeftTask/MenuLeftTask';
 
-const TaskView = () => {
+const TaskView = ({tryToClick, test}) => {
+
+   const test1 = informations => {
+
+    tryToClick(informations)
+
+   }
+
+
 
     return(
         <Fragment>
@@ -27,6 +35,7 @@ const TaskView = () => {
                                         <th scope="col">ID</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Assigned to</th>
+                                        <th scope="col">Priority</th>
                                         <th scope="col">DeadLine</th>
                                         <th scope="col">State</th>
                                         <th scope="col">Options</th>
@@ -37,42 +46,49 @@ const TaskView = () => {
                                         <th scope="row">1</th>
                                             <td>Organize CSS in APP</td>
                                             <td>Gabin Rimbault</td>
-                                            <td className="taskRed">15/12/2018</td>
-                                            <td className="taskGreen">In Progress</td>
+                                            <td className="lowPriority">Low</td>
+                                            <td className="priorityRed">15/12/2018</td>
+                                            <td className="priorityGreen">In Progress</td>
                                             <td className="iconTask">
-                                                <Link to="/task/"><i className="iconView fas fa-eye"></i></Link> 
-                                                <Link to="/task/"><i className="iconEdit fas fa-edit"></i></Link>
-                                                <Link to="/task/"><i className="iconDelete fas fa-trash-alt"></i></Link> 
+                                                <Link to="/task/"><i onClick={event => test1('view')} className="iconView fas fa-eye"></i></Link>
+                                                <Link to="/task/"><i onClick={event => test1('edit')} className="iconEdit fas fa-edit"></i></Link>
+                                                <Link to="/task/"><i onClick={event => test1('del')} className="iconDelete fas fa-trash-alt"></i></Link> 
+                                                <Link to="/task/"><i onClick={event => test1('archiver')} className="iconCheck fas fa-check"></i></Link>
                                             </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">2</th>
                                             <td>Finish Squellete HTML in APP</td>
                                             <td>Gabin Rimbault</td>
-                                            <td className="taskOrange">17/12/2018</td>
-                                            <td className="taskRed">Not Start</td>
+                                            <td className="mediumPriority">Medium</td>
+                                            <td className="priorityOrange">17/12/2018</td>
+                                            <td className="priorityRed">Not Start</td>
                                             <td className="iconTask">
                                                 <Link to="/task/"><i className="iconView fas fa-eye"></i></Link> 
                                                 <Link to="/task/"><i className="iconEdit fas fa-edit"></i></Link>
                                                 <Link to="/task/"><i className="iconDelete fas fa-trash-alt"></i></Link> 
+                                                <Link to="/task/"><i className="iconCheck fas fa-check"></i></Link>
                                             </td>
                                     </tr>
                                     <tr>
                                         <th scope="row">3</th>
                                             <td>Dev Calendar with JS ES6</td>
                                             <td>Gabin Rimbault</td>
-                                            <td className="taskGreen">21/12/2018</td>
-                                            <td className="taskGreen">In Progress</td>
+                                            <td className="highPriority">High</td>
+                                            <td className="priorityGreen">21/12/2018</td>
+                                            <td className="priorityGreen">In Progress</td>
                                             <td className="iconTask">
                                                 <Link to="/task/"><i className="iconView fas fa-eye"></i></Link> 
                                                 <Link to="/task/"><i className="iconEdit fas fa-edit"></i></Link>
                                                 <Link to="/task/"><i className="iconDelete fas fa-trash-alt"></i></Link> 
+                                                <Link to="/task/"><i className="iconCheck fas fa-check"></i></Link>
                                             </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    <p> {test ? test : 'nop'}</p>
                 </section>
                 </div>
             </div>

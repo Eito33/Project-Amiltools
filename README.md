@@ -218,4 +218,4 @@ La documentation est une page GitBook qui retranscrit l'ensemble de ce manuel et
 
 ## 3. Changelog
 
-Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/master/changelog/changelog-12-12-2018-(0.a).txt) 
+Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/master/changelog/changelog-13-12-2018-(0.b).txt) 

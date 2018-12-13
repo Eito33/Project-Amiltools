@@ -1,0 +1,59 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 12/12/2018
+#BUILD : 0.a
+
+#################################### LAST VERSION ####################################
+
+-----------------------------------------------------------------------------------------------
+
+# Maquette : (https://github.com/Eito33/Project-Phantom-Maquette)
+    # HTML :
+        - Mise en place complète du squelette de la page d'accueil. 
+        - Mise en place complète de la page Connexion.
+
+    # CSS :
+        - Mise en place complète des fichiers CSS concernant la page d'accueil.
+        - Mise en place complète des fichiers CSS concernant la page de connexion.
+
+-----------------------------------------------------------------------------------------------
+
+# Développement :
+    # React :
+        - Commencement de l'intégration de la maquette sur l'environnement React
+        - Correction de divers Bug CSS lié à l'intégration de la maquette
+            - Problème de Margin (réglé)
+            - Problème de padding (réglé)
+            - Problème lié au HR (réglé)
+
+-----------------------------------------------------------------------------------------------
+
+    # Structure :
+        - Mise en place du modéle MVC
+            -> Architecture :
+                -> src
+                    -> core
+                        -> components
+                            -> Contient l'ensemble des components lié à l'application
+                        -> config
+                            -> Contient l'ensemble des fichiers de configuration lié à l'application
+                        -> modules
+                            -> Contient l'ensemble des modules lié à l'application
+                        -> Dispatcher > Le dispatcher est le plus haut niveau de récupération des données transmises. 
+                           Chaque donnée récupérée dans les vues lui est transmise pour être dispatcher là où il y en a besoin
+                        -> Router > Le router est la partie de l'application qui gère les routes.
+                    
+                    -> view
+                        -> Contient l'ensemble des vues lié à l'application
+
+        -> Ajout d'un fichier Changelog
+        -> Création de la branch Dev pour github
+        
+-----------------------------------------------------------------------------------------------
+    
+# Bug :
+    - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

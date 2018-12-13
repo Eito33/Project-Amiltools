@@ -1,0 +1,75 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 13/12/2018
+#BUILD : 0.b
+
+#################################### LAST VERSION ####################################
+
+-----------------------------------------------------------------------------------------------
+
+
+# Maquette : (https://github.com/Eito33/Project-Phantom-Maquette)
+    # HTML :
+        - Finition de la partie HTML dont quelques retouches.
+        - Réalisation HTML des vues des pages suivantes :
+            -> User
+            -> Calendar
+            -> ReportBoard
+            -> TaskBoard
+            -> BugTracker
+
+    # CSS :
+        - Finition de la partie CSS dont quelques retouches.
+        - Réalisation CSS des vues suivantes :
+            -> User
+            -> Calendar
+            -> ReportBoard
+            -> TaskBoard
+                -> Add Task
+                -> Edit Task
+                -> View Task
+            -> BugTracker
+        - Les couleurs des différentes pages ne sont pas définitives        
+
+-----------------------------------------------------------------------------------------------
+
+# Développement :
+    # React :
+        - Finition de l'intégration de la maquette sur l'environnement React
+        - Intégration de l'ensemble des pages sur React
+            -> DashBoard
+            -> User
+            -> Calendar
+            -> Report
+            -> Task
+            -> BugTracker
+        - Correction finale sur le CSS lié à l'intégration des pages et quelques modifications sur le html.
+        - Ajout de la documentation et de la redirection vers GitBook
+        - Intégration du dispatcher (Voir Book pour ReadMe pour savoir comment se servir du dispatcher)
+
+    - Mise en place d'un schéma pour faire remonter les données via le dispatcher
+    - Suite à l'intégration du dispatcher toutes les actions faites sur la page doivent etre validé par le dispatcher
+    - Exemple :
+        -> Clic sur une vue
+        -> Information remonte aux composants parents
+        -> L'information remonte au dispatcher qui peut le dispatcher
+            -> Dispatcher enregistre les informations dans son state
+            -> Dispatcher va chercher les informations dont il a besoin (Modules, firebase)
+            -> Dispatcher renvoie au composant les informations voulues
+        -> Si un autre composant a besoin d'une information d'un autre composant il n'aura qu'à consulter le dispatcher
+        
+-----------------------------------------------------------------------------------------------
+
+#Structure :
+    - Ecriture du Cahier des Charges 
+    - Ecriture du fichier ReadMe
+        - Correction des différents fichiers
+        
+-----------------------------------------------------------------------------------------------
+    
+# Bug :
+    - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

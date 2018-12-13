@@ -1,29 +1,17 @@
-import React, { Component, Fragment } from 'react'
-
-
-
-class Dispatcher extends Component {
-
+class Dispatcher {
 
     isInformation(information){
         if(information === 'view'){
-            return 'Tu as demander la vue'
+            return 'View'
         }else if(information === 'edit'){
-            return 'Tu as demander a editer'
+            return 'Edit'
         }else if(information === 'del'){
-            return 'Tu as demander a supprimer'
+            return 'Delete'
         }else{
-            return 'Tu as demander a archiver'
+            return 'Archive'
         }
     }
 
-    render() {
-        return(
-            <Fragment>
-                
-            </Fragment>
-        )
-    }
 }
 
 export default Dispatcher

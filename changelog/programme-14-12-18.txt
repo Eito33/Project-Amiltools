@@ -1,13 +1,12 @@
-Réalisation en date du 13/12/2018 :
+Réalisation en date du 14/12/2018 :
 
 - Réaliser la vue de chaque application pour avoir une idée de ce a quoi cela pourrait ressembler
     - Vue Task -> Afficher les task d'exemple
-        -> Réaliser popup vue ajouter/editer/supprimer/archiver une task
+        -> Réaliser popup vue supprimer/archiver une task
     - Vue bugTracker -> Afficher les bugs d'exemple
-        -> -> Réaliser popup vue signaler/editer/supprimer/archiver un bug
+        -> Réaliser popup vue signaler/editer/supprimer/archiver un bug
 
 - Commencer a réaliser le calendrier en javascript
 
-- Reflechir a comment integrer le dispatcher
     
     

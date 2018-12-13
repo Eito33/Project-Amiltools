@@ -3,11 +3,7 @@ import React, { Fragment } from 'react'
 import './UserView.css';
 import MenuLeft from '../../core/modules/MenuLeft/MenuLeft'
 
-<<<<<<< HEAD
 const UserView = ({nom, prenom, mail, bio, role}) => {
-=======
-const UserView = () => {
->>>>>>> master
 
     return(
         <Fragment>
@@ -16,7 +12,6 @@ const UserView = () => {
                 <MenuLeft />
                 
                 <section className="mainContent col-lg-10">
-<<<<<<< HEAD
                     <h2>User Profile</h2> <p><button className="btn btn-outline-info my-2 my-sm-0" type="submit">Modifier</button></p>
                     <span className="userBadge badge badge-info">Developpeur Web</span>
                     <hr className="hrMargin" />
@@ -44,12 +39,6 @@ const UserView = () => {
                             </div>
                         </div>
                     </div>
-=======
-                    <h2>Bienvenue User</h2>
-                    <hr />
-                
-                    <p>Voici la vue user</p>
->>>>>>> master
                 </section>
                 </div>
             </div>

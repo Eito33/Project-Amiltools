@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-<<<<<<< HEAD
 import {Link} from 'react-router-dom';
 
 import './TaskView.css'
@@ -17,13 +16,6 @@ const TaskView = ({receivedClic, sendFromDispatcher}) => {
     const closeDiv = () => {
         document.getElementById('divhidden').style.display = 'none';
     }
-=======
-
-import './TaskView';
-import MenuLeftTask from '../TaskView/MenuLeftTask/MenuLeftTask';
-
-const TaskView = () => {
->>>>>>> master
 
     return(
         <Fragment>
@@ -32,7 +24,6 @@ const TaskView = () => {
                 <MenuLeftTask />
                 
                 <section className="mainContent col-lg-10">
-<<<<<<< HEAD
                     <p className="menuReportButton">
                         <button onClick={event => sendClick('view')} className="btn btn-outline-success my-2 my-sm-0" type="submit">Add Task</button> 
                     </p>
@@ -160,13 +151,6 @@ const TaskView = () => {
                             </form>
                     </div>
                 </div>
-=======
-                <h2>Task</h2>
-                    <hr />
-                
-                    <p>Voici la vue Task</p>
-                </section>
->>>>>>> master
                 </div>
             </div>
         </Fragment>

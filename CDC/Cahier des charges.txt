@@ -1,0 +1,212 @@
+
+AmilTools est une application developper avec react elle a pour vocation a être installer sur un reseau propre (local/web)
+Elle permet de au équipe de gérer plus efficacement leur temps de travail et apporte des outils viable plutot que devoir télécharger d'autre outils.
+
+C'est une sorte de boite a outils du developpeur qui permet de centraliser un maximum d'outils et de logiciel.
+
+Est défini comme tel : 
+    - NavBar : Barre de Navigation qui contient le champs de recherche/ zone de notification / logo. Elle est de couleur noire
+    - MenuLeft : Barre de Navigation contenant les différents onglet de navigation de l'application.
+        Elle peut au besoin changer en fonction de l'onglet ouvert.
+    - Fenetre principal (Grande fenetre) : L'espace central a droite du MenuLeft affiche l'ensemble des vue appeler et demandée par l'application.
+
+Fonction :
+
+=====================================================================================================================
+
+L'ensemble de l'application doit fonctionner sous react.
+Seul techno utilisable :
+    - HTML
+    - CSS
+    - JS
+    - React 
+
+=====================================================================================================================
+
+Home:
+La page HOME est le carrefour central de l'application.
+On y retrouve un condensé des informations en place
+    CardBoard:
+        - Regroupe sous forme de 3 Cartes :
+            - Report : Compte rendu déja établie
+            - Bug : Les bugs qui nous sont assigné
+            - Task : Les taches qui nous sont assigné.
+
+    ReportBoard: 
+        - Affiche une partie du dernier compte rendu établie.
+            un lien est disponible pour afficher intégralement dans la page le compte rendu
+
+    BugTrackerBoard ou TaskBoard au choix (a définir)
+        Affiche les bugs ou task qui est assigné a l'utilisateur.
+
+=====================================================================================================================
+
+MenuLeft: 
+    Affiche l'ensemble des liens utiles a l'application :
+        - DashBoard : Ramene sur la page principal de l'application
+        - Calendar : Affiche l'onglet Calendar de l'application
+        - Report : Affiche l'onglet Report de l'application
+        - Task : Affiche l'onglet task de l'application
+        - BugTracker : Affiche l'onglet bugtracker de l'application
+
+=====================================================================================================================        
+
+AmilTools : Titre de l'application, un clic sur le nom raméne sur la page principal de l'application
+
+=====================================================================================================================
+
+SearchBar : Non fonctionnel pour le moment
+
+=================================================================================================================
+
+Calendrier :
+Afficher un calendrier MOIS/MOIS dans des grande case.
+L'utilisateur a la possibilité de marquer des rendez vous.
+    Voir ajout via google calendar et envoie de mail
+L'utilisateur peut voir ses rendez vous
+L'utilisateur peut modifier un rendez vous
+L'utilisateur peut supprimer un rendez vous
+
+- Réaliser le Calendrier en HTML/CSS/JS avec react
+    - Utilisation du components approprier.
+    - Possibilité de faire d'enregistrer des rendez vous avec api web storage
+    - On les affiche aussi avec l'api web storage
+
+Possibilité d'afficher un bouton a un utilisateur qui genere du code qui enregistre un rendez vous pour la personne :
+
+A -> Envoie un Rendez vous le Jeudi 12/12/2018 a 18h00 par message -> B
+B <- Recoie un Bouton html et au clic enregistrera dans sont calendrier le RDV <- A
+
+Le button contiendra le code générer automatiquement pour enregistrer un RDV le 12/12/2018 a 18h avec l'api web storage
+
+=====================================================================================================================
+
+Report : 
+Affiche dans la grande fenetre le dernier compte rendu
+Affiche dans le menu de gauche l'ensemble des 5 dernier compte rendu sous forme de lien
+    Un clic sur un lien modifie la grande fenetre pour afficher le bon compte rendu
+Le dernier lien du menu de gauche modifie la grande fenetre pour faire apparaitre l'ensemble des compte rendu sauvegarder
+Il est possible d'ajouter, modifier, supprimer, archiver un les comptes rendu
+
+Le but du report (Compte rendu) et d'apporter les informations retransmise lors de réunion ou de rassemblement.
+Il y a deux partie distincte au report :
+        - L'écriture :
+            - Ce fera via une fenetre ouverte et en markdown (utiliser la librairie marked)
+            - L'affichage des report écrit.
+Au besoin on pourra définir qui a accés en lecture/écriture au markdown.
+L'utilisateur se connecte et a la possibilité d'écrire un nouveau compte rendu avec le markdown.
+Une fois celui ci terminer, l'utilisateur a la possibilité de modifier, de supprimer ou d'enregistrer sont document.
+Le titre n'est pas changeable il aura toujours la forme suivante :
+    - Compte Rendu N°[ID] du "13/12/2018"
+- Si l'utilisateur enregistre sont document, il est automatiquement synchroniser dans firebase.
+    Il s'affichera en tete de liste dans le menu de gauche de l'onglet report et prendra automatiquement la place du dernier report dans la fenetre central de l'application.
+- Si l'utilisateur souhaite modifier un report, celui ci y a acces via un bouton quand on affiche un report.
+Cela a pour effet de charger dans une nouvelle fenetre le markdown déja écrit. L'utilisateur a ensuite la possibilité de sauvegarder c'est modification ou de supprimer le report.
+- Si l'utilisateur souhaite supprimer un report il peut le faire via un bouton prévue a cette effet.
+    Une demande de confirmation via une fenetre pop-up sera demander.
+
+
+=====================================================================================================================
+
+Task :
+Task est un planificateur de tache, il permet l'ajout de dead line dans les taches a accomplir
+il est possible d'ajouter, editer, supprimer, valider et de voir le détail (d') une task
+Une tache est forcément assigner a un utilisateur valide. 
+    Si durant la saisie de la tache et l'assignement de celle ci a un utilisateur et que celui ci n'est pas trouver.
+    la tache ne peut etre enregistrer
+Une tache comprend :
+                        - Un Nom
+                        - Une personne attribué
+                        - Une date d'échéance
+                        - Un booléan si elle est réaliser ou non
+                        - Un contenu qui explique la tache
+Le dernier jour de la task celle ci devient oranger, elle passera a rouge quelques heures avant la fin de la tache.
+Une fois le délais écouler ou alors si elle est valider la task est automatiquent archiver. 
+Il est possible de désarchiver une task
+
+Les task sont un élément essentiel de l'application, chaque utilisateur pourra définir c'est propre task par projet.
+Il pourra ainsi visualiser trés facilement quelle tache il doit mener a bien en premier.
+Les task sont réaliser JS principalement.
+Le but est d'afficher un tableau styliser avec html/css et d'apporter le maximum d'informations rapidement sur les task en court.
+Le tout sera bien sur synchroniser avec firebase.
+L'utilisateur peut créer une task celle-ci sera automatiquement enregistrer dans firebase une fois valider.
+L'utilisateur a la possibilité via un bouton prévu a cette effet de modifier une task.
+L'utilisateur a la possibilité via un bouton prévu a cette effet de supprimer une task
+L'utilisateur a la possibilité via un bouton prévu a cette effet d'archiver une task
+
+Chacune des options developper plus haut a pour effet de :
+    - Enregistrer dans firebase une nouvelle task
+    - De charger une nouvelle task et l'utilisateur peut ensuite enregistrer ou supprimer sa task
+    - De supprimer une task via un id, une demande de confirmation sera demander.
+    - D'archiver une task celle ci apparaitra alors en lecture seul et ne pourra plus etres modifier.
+
+
+=====================================================================================================================
+
+bugTracker :
+Le BugTracker est un traqueur de bugn il permet de signaler les bug découvert et d'afficher plus de détails sur la source du probléme.
+Il est possible d'ajouter, editer, supprimer, valider et de voir le détail (d') un bug
+Un Bug Comprend :
+                    - Un Nom
+                    - Une priority (Priorité du bug a régler : Low - Medium - High)
+                    - Un Contexte (De quelle domaine releve le bug : Logiciel - Web - Infrastructure)
+                    - Une Zone  (Indiquer la zone dans lequele le bug est présent (quelle fichier web ? Quelle logiciel ? ))
+                    - Une date de création ainsi que le nom du créateur
+                    - Une personne attribué
+                    - Un contenu qui explique, montre comment réaliser le bug
+Un bug n'est pas forcément attribuer a une personne dans ce cas elle sera indiquer comme "SIGNALER" dans le cas ou un bug
+serait assigné a une personne il sera indiquer comme "EN TRAITEMENT"
+Une fois le bug valider celui-ci est automatiquement archiver.
+Il est possible de désarchiver un bug.
+
+Le bugtracker est un élément essentiel de l'application, chaque utilisateur pourra voir les differents bug signaler par projet.
+Il pourra ainsi visualiser trés facilement quelle bug est présent et disponible pour etre corriger.
+Le bugtracker est réaliser JS principalement.
+Le but est d'afficher un tableau styliser avec html/css et d'apporter le maximum d'informations rapidement sur les bug en court.
+Le tout sera bien sur synchroniser avec firebase.
+
+Chaque utilisateur a la possibilité de signaler un bug. Cependant il devra être valider par un developper.
+Le terme valider signifie la procédure de validation d'un bug elle est a l'appréciation de chacun.
+L'utilisateur peut créer/signaler un bug celle-ci sera automatiquement enregistrer dans firebase une fois valider.
+L'utilisateur a la possibilité via un bouton prévu a cette effet de modifier un bug.
+L'utilisateur a la possibilité via un bouton prévu a cette effet de supprimer un bug
+L'utilisateur a la possibilité via un bouton prévu a cette effet d'archiver/désarchiver un bug
+
+Chacune des options developper plus haut a pour effet de :
+    - Enregistrer dans firebase un nouveau bug
+    - De charger un bug et l'utilisateur peut ensuite enregistrer ou supprimer sont bug
+    - De supprimer un bug via un id, une demande de confirmation sera demander.
+    - D'archiver un bug si celui ci est traité et valider celui ci apparaitra alors en lecture seul et ne pourra plus etres modifier mais pourra etre desarchiver.
+
+=====================================================================================================================
+
+User: 
+La partie user concerne les options et informations lié a l'utilisateur.
+Celui-ci pourra retrouver sur sont profile en cliquant en haut a droite sur l'icone user :
+    - Nom + Prénom
+    - Mail
+    - Role (Admin, User)
+    - Une biographie qu'il aura écrit
+    - Un avatar
+    - Il retrouvera l'ensemble des taches qui lui sont assigner
+    - il retrouvera l'ensemble des bug qui lui sont assigner
+Il lui sera possible de modifier l'ensemble des informations déja enregistrer (Nom, prénom, mail, mdp, métier, biographie) or avatar qui lui sera attribuer automatiquement a la connexion.
+L'utilisateur pourra depuis sont panel user, valider, editer, supprimer, archiver des task, bug, via des icones prévue a cette effet.
+L'utilisateur aurra également la possibilité de ce deconnecter se qui aura pour effet de le renvoyer sur la page de connexion.
+
+L'utilisateur devra se connecter via differentes options :
+    - Compte amiltone (@amiltone.fr)
+    - Compte google
+
+Une fois connecté celui-ci aura accés a l'application. Le cas échéant on lui demandera de se connecter.
+L'utilisateur a accés a l'ensemble des fonctionnalités. 
+Le components user devra gérer les informations de l'utilisateur ou qu'il soit notamment l'id et le role.
+
+L'ensemble du state user devra etres remonter dans un component state dispatcher qui gerer l'ensemble des states.
+
+=====================================================================================================================
+
+Doc:
+La documentation est une page GitBook qui retranscrit l'ensemble de ce manuel et quelques informations supplémentaire comme le changelog et le code source.
+
+=====================================================================================================================

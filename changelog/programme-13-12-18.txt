@@ -1,0 +1,29 @@
+Réalisation en date du 13/12/2018 :
+
+
+
+- Réaliser la vue de chaque application pour avoir une idée de ce a quoi cela pourrait ressembler
+    - Vue USER -> Afficher les bonnes informations
+    - Vue Doc -> Redirect to gitbook
+    - Vue Report -> Afficher un report d'exemple
+    - Vue Task -> Afficher les task d'exemple
+    - Vue bugTracker -> Afficher les bugs d'exemple
+
+- Valider ensemble du CSS 
+    - Voir si on trouve un ou des bugs
+    - Valider l'ensemble du design
+    - Valider aussi le choix d'architecture
+
+- Ecrire le changelog du 12/12/2018 et valider avant de partir celui du 13/12/2018
+
+- Commencer a réaliser le calendrier en javascript
+
+
+
+Bug CSS :
+
+    - Au niveau des CardBoard les fléches de l'onglet view détails ne sont pas bien aligné.
+    - Au niveau des CardBoard la séparation entre les deux onglets de la cartes est marqué par l'ombre.
+    - Au niveau du MenuLeft les fléches des onglets qui contient plus d'options ce décale quand on passe la souris dessus.
+    - Peut être revoir les couleurs des icones de la view/edit/delete des task
+    

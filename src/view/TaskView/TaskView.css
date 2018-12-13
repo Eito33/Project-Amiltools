@@ -1,0 +1,45 @@
+.iconTask{
+    text-align: center;
+}
+
+.iconView{
+    color: cornflowerblue;  
+}
+
+.iconEdit{
+    color: coral;   
+}
+
+.iconDelete{
+    color: brown;   
+}
+
+.iconTask>a>i{
+    margin-right: 10px;
+}
+
+.taskGreen{
+    background-color: darkgreen;
+    color: white;
+    font-weight: 500;
+}
+
+.taskOrange{
+    background-color: coral;
+    color: white;
+    font-weight: 500;
+}
+
+.taskRed{
+    background-color: brown;
+    color: white;
+    font-weight: 500;
+}
+
+th{
+    font-weight: bold;
+}
+
+td{
+    font-weight: 400;
+}

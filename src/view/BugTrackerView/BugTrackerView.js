@@ -1,8 +1,13 @@
 import React, { Fragment } from 'react'
 
+<<<<<<< HEAD
 import '../TaskView/TaskView.css'
 import './BugTrackerView.css'
 import {Link} from 'react-router-dom';
+=======
+import './BugTrackerView';
+import BugTrackerBoard from '../Home/BugTrackerBoard/BugTrackerBoard';
+>>>>>>> master
 import MenuLeftBugTracker from '../BugTrackerView/MenuLeftBugTracker/MenuLeftBugTracker';
 
 const BugTrackerView = () => {
@@ -14,6 +19,7 @@ const BugTrackerView = () => {
                 <MenuLeftBugTracker />
                 
                 <section className="mainContent col-lg-10">
+<<<<<<< HEAD
                     <p className="menuReportButton">
                         <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Add Bug</button> 
                     </p>
@@ -76,6 +82,9 @@ const BugTrackerView = () => {
                             </table>
                         </div>
                     </div>
+=======
+                    <BugTrackerBoard />
+>>>>>>> master
                 </section>
                 </div>
             </div>

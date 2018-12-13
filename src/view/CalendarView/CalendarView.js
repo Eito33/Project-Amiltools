@@ -12,6 +12,7 @@ const CalendarView = () => {
                 <MenuLeft />
                 
                 <section className="mainContent col-lg-10">
+<<<<<<< HEAD
                     <div className="row">
                         <div className="col-lg-12">
                            <h2>Mois de Décembre</h2>
@@ -188,6 +189,12 @@ const CalendarView = () => {
                         </div>
                     </div>
 
+=======
+                    <h2>Calendar</h2>
+                    <hr />
+                
+                    <p>Voici la vue Calendar</p>
+>>>>>>> master
                 </section>
                 </div>
             </div>

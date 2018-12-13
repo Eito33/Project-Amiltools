@@ -12,6 +12,7 @@ const ReportView = () => {
                 <MenuLeftReport />
                 
                 <section className="mainContent col-lg-10">
+<<<<<<< HEAD
                         <p className="menuReportButton">
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">New Report</button> 
                             <button className="btn btn-outline-warning my-2 my-sm-0" type="submit">Edit Report</button> 
@@ -28,6 +29,12 @@ const ReportView = () => {
                             </div>
                         </div>
                     </div>
+=======
+                    <h2>Report</h2>
+                    <hr />
+                
+                    <p>Voici la vue Report</p>
+>>>>>>> master
                 </section>
                 </div>
             </div>

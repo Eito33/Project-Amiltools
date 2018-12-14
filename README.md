@@ -1,4 +1,4 @@
-# AmilTool's - `V. 0.a Dev`
+# AmilTool's - `V. 0.b(2) Dev`
 ![ImageLOAD](http://image.noelshack.com/fichiers/2018/50/4/1544740136-amiltools.png)
 
 ## SOMMAIRE : 
@@ -218,4 +218,4 @@ La documentation est une page GitBook qui retranscrit l'ensemble de ce manuel et
 
 ## 3. Changelog
 
-Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/dev/changelog/changelog-13-12-2018-(0.b).txt) 
+Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/dev/changelog/changelog-14-12-2018-(0.b2).txt) 

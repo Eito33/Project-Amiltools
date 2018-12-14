@@ -3,29 +3,29 @@ import {Link} from 'react-router-dom';
 
 import './TaskView.css'
 
-import MenuLeftTask from '../TaskView/MenuLeftTask/MenuLeftTask';
+import MenuLeft from '../../core/modules/MenuLeft/MenuLeft';
+import TaskViewPopup from '../TaskView/View/TaskViewPopup/TaskViewPopup'
 
-const TaskView = ({receivedClic, sendFromDispatcher}) => {
-
+const TaskView = ({receivedClic, sendFromDispatcher, contentTextarea}) => {
     //Methode qui permet l'envoie d'une information via un clic au composant parents
     const sendClick = information => {
         receivedClic(information)
-        document.getElementById('divhidden').style.display = 'block';
+        document.getElementById('divhidden').style.display ='block'
     }
 
-    const closeDiv = () => {
-        document.getElementById('divhidden').style.display = 'none';
+    const selectDisplayPopup = information => {
+        return <TaskViewPopup contentTextarea={contentTextarea} view={information} sendFromDispatcher={sendFromDispatcher} />
     }
 
     return(
         <Fragment>
              <div className="container-fluid">
                 <div className="row">
-                <MenuLeftTask />
+                <MenuLeft />
                 
                 <section className="mainContent col-lg-10">
                     <p className="menuReportButton">
-                        <button onClick={event => sendClick('view')} className="btn btn-outline-success my-2 my-sm-0" type="submit">Add Task</button> 
+                        <button onClick={event => sendClick('new')} className="btn btn-outline-success my-2 my-sm-0" type="submit">Add Task</button> 
                     </p>
                     <hr />
                 
@@ -55,7 +55,7 @@ const TaskView = ({receivedClic, sendFromDispatcher}) => {
                                                 <Link to="/task/"><i onClick={event => sendClick('view')} className="iconView fas fa-eye"></i></Link>
                                                 <Link to="/task/"><i onClick={event => sendClick('edit')} className="iconEdit fas fa-edit"></i></Link>
                                                 <Link to="/task/"><i onClick={event => sendClick('del')} className="iconDelete fas fa-trash-alt"></i></Link> 
-                                                <Link to="/task/"><i onClick={event => sendClick('archiver')} className="iconCheck fas fa-check"></i></Link>
+                                                <Link to="/task/"><i onClick={event => sendClick('archive')} className="iconCheck fas fa-check"></i></Link>
                                             </td>
                                     </tr>
                                     <tr>
@@ -92,65 +92,9 @@ const TaskView = ({receivedClic, sendFromDispatcher}) => {
                     </div>
                 </section>
 
-                <div id='divhidden'>
-                    <div className="titleTask">
-                        Organize CSS in APP <span onClick={closeDiv} className="closeItem"><i className="fas fa-times-circle"></i></span>
+                    <div id='divhidden'>
+                        {selectDisplayPopup(sendFromDispatcher)}
                     </div>
-                    <div className="contentTask">
-                        <p>{sendFromDispatcher ? 'Voici le nom du module charger : ' + sendFromDispatcher : 'Aucun module charger...'}</p>
-                        <form>
-                            <div className="form-group row">
-                                <label htmlFor="title" className="col-sm-2 col-form-label">Title</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="title" placeholder="Organize CSS in APP" />
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="assignedto" className="col-sm-2 col-form-label">Assigned To</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="assignedto" placeholder="Gabin Rimbault" />
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="assignedto" className="col-sm-2 col-form-label">Assigned To</label>
-                                <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="assignedto" placeholder="Gabin Rimbault" />
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="deadline" className="col-2 col-form-label">DeadLine</label>
-                                <div className="col-10">
-                                    <input className="form-control" type="date" defaultValue="2018-12-15" id="deadline" />
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="priority" className="col-sm-2 col-form-label">Priority</label>
-                                <div className="col-sm-10">
-                                    <select id="inputPriority" className="form-control">
-                                        <option>Low</option>
-                                        <option>Medium</option>
-                                        <option>High</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <label htmlFor="state" className="col-sm-2 col-form-label">State</label>
-                                <div className="col-sm-10">
-                                    <select id="inputState" className="form-control">
-                                        <option>In Progress</option>
-                                        <option>Not Start</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="form-group row">
-                                <div className="taskFormButton col-sm-10">
-                                    <button type="submit" className="btn btn-outline-success">Save</button>
-                                    <button type="submit" className="btn btn-outline-danger">Delete</button>
-                                </div>
-                            </div>
-                            </form>
-                    </div>
-                </div>
                 </div>
             </div>
         </Fragment>

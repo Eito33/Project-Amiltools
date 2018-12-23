@@ -1,12 +1,12 @@
-# AmilTool's - `V. 0.b(2) Dev`
+# AmilTool's - `V. 0.1.0:001 Dev`
 ![ImageLOAD](http://image.noelshack.com/fichiers/2018/50/4/1544740136-amiltools.png)
 
 ## SOMMAIRE : 
 
-* [Général](https://github.com/Eito33/Project-Phantom/tree/dev#1-g%C3%A9n%C3%A9ral)
-* [Fonctions](https://github.com/Eito33/Project-Phantom/tree/dev#2-fonctions)
-* [Logiciels](https://github.com/Eito33/Project-Phantom/tree/dev#3-logiciels)
-* [Changelog](https://github.com/Eito33/Project-Phantom/tree/dev#3-changelog)
+* [Général](https://github.com/Eito33/Project-Phantom#1-général)
+* [Fonctions](https://github.com/Eito33/Project-Phantom#2-fonctions)
+* [Logiciels](https://github.com/Eito33/Project-Phantom#3-logiciels)
+* [Changelog](https://github.com/Eito33/Project-Phantom#3-changelog)
 
 
 ------------------------------
@@ -211,11 +211,11 @@ L'ensemble du state user devra être remonter dans un component dispatcher qui g
 
 ### Doc:
 
-La documentation est une page GitBook qui retranscrit l'ensemble de ce manuel et quelques informations supplémentaires comme le changelog et le code source.
+Disponible bientôt!
 
 ------------------------------
 
 
 ## 3. Changelog
 
-Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/dev/changelog/changelog-14-12-2018-(0.b2).txt) 
+Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/master/changelog/) 

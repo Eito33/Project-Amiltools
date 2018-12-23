@@ -1,0 +1,17 @@
+{
+    "routeApi": "/api/v1/",
+    "port": 8081,
+    "error": {
+        "mail": "This email is already used",
+        "table": "The table does not exist",
+        "nothing": "The answer did not return anything",
+        "notadduser": "Can not add user...",
+        "elementuse": "The element already exists",
+        "passwordwrong": "Wrong Email or Bad password"
+    },
+    "success": {
+        "deleteitem": "Successfully deleted the item",
+        "useradd": "Success : user has been added",
+        "useredit": "Successful user has been successfully edited"
+    }
+}

@@ -1,0 +1,15 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body{
+  background-color: #f8f8f8;
+}
+
+.mainContent{
+  background-color: #ffffff;
+  min-height: 90vh;
+  padding-top: 25px;
+}

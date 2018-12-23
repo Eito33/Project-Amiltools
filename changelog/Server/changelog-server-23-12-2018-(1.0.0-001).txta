@@ -1,0 +1,79 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 23/12/2018
+#BUILD : SERVER : 1.0.0:001 - DEV
+
+#################################### LAST VERSION ####################################
+-----------------------------------------------------------------------------------------------
+
+# Général : 
+    Restructuration totale du projet. 
+    Celui-ci était initialement envisagé sans backend après quelques réflexions il a été décider qu'un serveur NodeJS s'occuperait de gérer tous le back end de l'application.
+    L'application utilisant que du front sans BDD relationnelle était trop contraignant.
+
+-----------------------------------------------------------------------------------------------
+
+# Server :
+    # Général : 
+        -> L'ensemble du serveur a été écrits en NodeJS
+        -> Voir le package JSON pour la liste des modules utilisés 
+        -> L'ensemble du serveur est basé sur le modèle MVC et API REST
+
+    # API :
+        -> Voir Documentation pour consulter l'ensemble des règles lié a l'API REST.
+        -> L'ensemble de l'API REST renvoie des données sous format JSON.
+        -> L'API REST renvoie toujours une réponse sous forme de booléen avec un code erreur.
+            -> /api/v1/user - Méthode qui renvoie l'ensemble des utilisateurs ainsi que leurs informations
+            -> /api/v1/user/:id - Méthode qui prend l'id d'un user et renvoie l'ensemble de ses informations
+            -> /api/v1/user/add - Méthode qui prend un tableau de params et qui insère un user dans la bdd 
+            -> /api/v1/user/update/:id - Méthode qui prend l'id d'un user et modifie un paramètre (pour le moment)
+            -> /api/v1/user/delete/:id - Méthode qui prend l'id d'un user et le supprime (IRREVERSIBLE)
+            -> /api/v1/user/log - Méthode qui prend un tableau de paramètre et valide ou non la connexion
+
+    # Models :
+        -> Dossier contenant l'ensemble des models de l'application serveur
+            -> MAIN MODELS
+                ->  verifTable(table) :: Méthode qui vérifie si la table entrer en parametre est existante
+                -> findAllMainModel(table) :: Méthode qui renvoie un ensemble d'informations
+                -> findMainModel(table, content = '1', search= 'id', field = '*') :: Méthode qui renvoie une information
+                -> deleteModel(table, id) :: Méthode qui supprimer une entrer 
+                -> verifBcryptPassword(password, hash) :: Méthode qui utilise Bcrypt pour hasher un mot de passe
+                -> hashBcryptPassword(password) :: Méthode qui compare deux mot de passe crypter avec bcrypt
+
+            -> USER MODELS
+                -> findAllUserModel(table) :: Méthode qui recherche l'ensemble des utilisateurs 
+                -> findOneUserModel(table, req, search) :: Méthode qui recherche un utilisateur 
+                -> addUserModel(table, req) :: Méthode qui ajoute un utilisateur
+                -> updateUserModel(table, column, content, search,  whereBy='id') :: Méthode qui modifie un utilisateur
+                -> deleteUserModel(table, id) :: Méthode qui supprime un utilisateur 
+                -> logUserModel(table, req) :: Méthode qui connecte un utilisateur
+
+    # Controllers :
+        -> Dossier contenant l'ensemble des controllers de l'application serveur 
+            -> MAIN CONTROLLER 
+                -> validFunction(result, res, response, error) :: Méthode qui valide le retour de l'ensemble des controllers
+            
+            -> USER CONTROLLER
+                -> findAllUserController :: Controller qui recherche l'ensemble des utilisateurs 
+                -> findOneUserController :: Controller qui recherche un utilisateur 
+                -> addUserController :: Controller qui ajoute un utilisateur
+                -> updateUserController :: Controller qui modifie un utilisateur
+                -> deleteUserController :: Controller qui supprime un utilisateur 
+                -> logUserController :: Controller qui connecte un utilisateur
+
+    # Config :
+        -> Ajout du fichier de configuration du serveur.
+            -> Le fichier contient :
+                -> L'ensemble des règles d'erreur ou de succès lié a l'API REST
+                -> Le port d'écoute du serveur
+                -> Le chemin d'accès a l'API REST
+
+        -> Ajout du fichier de configuration d'accès à la BDD
+            -> Le fichier contient les informations de connexion à la BDD
+
+-----------------------------------------------------------------------------------------------
+
+# Note :
+    - Un refactoring est prévu de l'ensemble des fichiers Models et Controller pour optimiser le tout.
+
+#################################### LAST VERSION ####################################

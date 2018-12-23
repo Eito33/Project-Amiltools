@@ -1,0 +1,70 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 23/12/2018
+#BUILD : CLIENT : 1.0.0:001 - DEV
+
+#################################### LAST VERSION ####################################
+-----------------------------------------------------------------------------------------------
+
+# Général : 
+    Restructuration totale du projet. 
+    Celui-ci était initialement envisagé sans backend après quelques réflexions il a été décider qu'un serveur NodeJS s'occuperait de gérer tous le back end de l'application.
+    L'application utilisant que du front sans BDD relationnelle était trop contraignant.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+    # Général :
+        -> L'ensemble des fichiers ont été supprimés et remis a jour pour coller avec la nouvelle version du projet.
+        -> Une partie des anciennes vues a été réadapté et une autre supprimer.
+        -> Plusieurs bugs lié à l'ancienne version ont été corrigés
+    
+    # Actions :
+        -> isAuthActions : Action qui gère la connexion de l'utilisateur
+        -> saveUserActions : Actions qui gèrent les données de l'utilisateur connecté
+
+    # Components :
+        -> HOME : Dossier qui contient l'ensemble des components affichés dans la fenêtre principale du dashboard
+            -> Home : Contient les components ci dessous :
+                -> BugTrackerBoard : Afficher un petit résumé des bugs de l'utilisateur
+                -> CardBoard : Affiche 3 cartes 
+                    -> Reports (blue) : Affiche le nombre de report disponible
+                    -> Bugs (yellow) : Affiche le nombre de bugs signalé
+                    -> Tasks (green) : Affiche le nombre de task assigné
+                -> ReportBoard : Affiche le dernier report poster
+        
+        -> App : Point d'entrer de l'application, toute les règles principale et l'affichage des components y est indiqué
+        -> MenuLeft : Component qui affiche le menu de gauche
+        -> NotFound : Component qui s'affiche quand aucun component n'est trouvé dans le router
+
+    # Containers :
+        -> BugTracker : Container qui affiche l'ensemble des bugs signalés
+        -> Calendar : Container qui affiche un calendrier
+        -> Connexion : Container qui gère la connexion de l'utilisateur
+        -> Header : Container contenant le bandeau du haut
+        -> Options : Container qui affiche les options de l'application disponible
+        -> Report : Container qui affiche les reports
+        -> Task : Container qui affiche les tasks disponibles
+        -> User : Container qui affiche le profil de l'utilisateur
+
+    # Helpers :
+        -> Require_isAuth :: Service qui gère si l'utilisateur est connecté ou non
+
+    # Reducers : 
+        -> isAuthReducer :: Variable qui sait si l'utilisateur est connecté ou non
+        -> saveUserReducer :: Variable qui contient l'ensemble des informations de l'utilisateur connecté
+
+    # Styles : 
+        -> Contient l'ensemble des fichiers styles pour le CSS des components/containers
+
+    # Tests : 
+        -> Contient l'ensemble des tests unitaire
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+   CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+   CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+   CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

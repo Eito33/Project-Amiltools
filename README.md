@@ -218,4 +218,4 @@ Disponible bientôt!
 
 ## 3. Changelog
 
-Le changelog est disponible [ici](https://github.com/Eito33/Project-Phantom/blob/master/changelog/) 
+Le changelog est disponible [ici](https://github.com/Eito33/Project-Amiltools/tree/dev/changelog) 

@@ -16,3 +16,12 @@ export function saveUserActions(tableParams){
         payload: tableParams
     }
 }
+
+export const LAST_REPORT = 'LAST_REPORT'
+
+export function getLastReportActions(Params){
+    return {
+        type: LAST_REPORT,
+        payload: Params
+    }
+}

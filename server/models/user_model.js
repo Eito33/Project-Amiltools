@@ -32,10 +32,14 @@ module.exports = {
 
                    //Contient le password hash
                    const passwordHash = Model.hashBcryptPassword(req.password)
+                   //Contient le token
+                   const token = Model.hashBcryptPassword(req.mail)
+                   //Contient le grade
+                   const role = Model.hashBcryptPassword('user')
 
                    //Inscrit l'user en bdd
-                   DB.query(`INSERT INTO ${table}(firstname, lastname, mail, password)
-                              VALUES ('${req.firstname}', '${req.lastname}', '${req.mail}', '${passwordHash}')`,
+                   DB.query(`INSERT INTO ${table}(firstname, lastname, mail, password, token, grade)
+                              VALUES ('${req.firstname}', '${req.lastname}', '${req.mail}', '${passwordHash}', '${token}', '${role}')`,
                               (err, result) => {
                         if(err) reject(config.error.notadduser)
                         else resolve(config.success.useradd)
@@ -48,34 +52,27 @@ module.exports = {
         })
     },
 
-    updateUserModel(table, column, content, search,  whereBy='id'){ //TODO: A REFAIRE
+    updateUserModel(table, paramsArray, search){
         return new Promise((resolve, reject) => {
-            Model.verifTable(table)
-            .then((response) => {
-                Model.findMainModel(table, search) 
-                .then((reponse) => {
-                    Model.findMainModel(table, content, column, column)
-                    .then((error) => reject(config.error.elementuse))
-                    .catch((response) => {
-
-                        //Fait un Update de l'user
-                        DB.query(`UPDATE ${table} SET ${column}='${content}' WHERE ${whereBy}='${search}'`, (err, result) => {
-                            if(err) reject(err)
-                            resolve(config.success.useredit)
-                        })
-                    })
-                })
-                .catch((error) => reject(error))
-            })
+            if(paramsArray['password'] != undefined){
+                paramsArray['password'] = Model.hashBcryptPassword(paramsArray['password'])
+            }
+            if(paramsArray['mail'] != undefined){
+                const token = Model.hashBcryptPassword(paramsArray['mail'])
+                paramsArray['token'] = token
+            }
+            Model.updateMainModel(table, paramsArray, search)
+            .then((response) => resolve(response))
             .catch((error) => reject(error))
         })
+
     },
 
     deleteUserModel(table, id){
         return new Promise((resolve, reject) => {
             Model.deleteModel(table, id)
             .then((response) => resolve(response))
-            .catch((error) => reject(error)) 
+            .catch((error) => reject(error))
         })
     },
 
@@ -84,10 +81,25 @@ module.exports = {
             Model.findMainModel(table, req.mail, 'mail')
             .then((response) => {
                 //Verifie avec la comparaison de bcrypt si les deux password sont identique
-                if(Model.verifBcryptPassword(req.password, response[0].password)) resolve(response)
+                if(Model.verifBcryptPassword(req.password, response[0].password)) {
+                    resolve(response)
+                }
                 else reject(config.error.passwordwrong)
             })
             .catch((error) => reject(error))
+        })
+    },
+
+
+    logUserWithTokenModel(table, req){
+        return new Promise((resolve, reject) => {
+            Model.findMainModel(table, req, 'token')
+            .then((response) => {
+                resolve(response)
+            })
+            .catch((error) => {
+                reject(error)
+            })
         })
     },
 }

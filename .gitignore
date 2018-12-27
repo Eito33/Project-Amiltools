@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# changelog
+/changelog/NewChange.txt
+
 # testing
 /coverage
 

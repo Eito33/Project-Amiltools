@@ -12,7 +12,7 @@ class Header extends Component{
                         <Link to='/' className="navbar-brand">AmilTools</Link>
 
                         <form className="form-inline">
-                            <Link to='/doc'><i className="nav-account-icon fas fa-book"></i></Link>
+                            <a target='_blank' href="https://devgabinrimbault.gitbook.io/amiltool-s/"><i className="nav-account-icon fas fa-book"></i></a>
                             <Link to='/user'><i className="nav-account-icon fas fa-user"></i></Link>
                                 
                             <input disabled className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

@@ -1,0 +1,51 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 27/12/2018
+#BUILD : CLIENT : 1.0.0:002 - DEV
+
+#################################### LAST VERSION ####################################
+-----------------------------------------------------------------------------------------------
+
+# Général : 
+    Un gros travail sur le serveur a été fait (sur les routes) et quelques bug persiste (sur les routes). 
+    Le gros du travail a été fait et la documentation de l'API REST devrait bientôt être réalisée.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+  
+    # Actions :
+        -> getLastReportActions : Action qui gère les données du dernier Report sauvegarder dans la BDD.
+
+    # Components :
+        -> Home : 
+            -> ReportBoard : Mise à Jour du ReportBoard, il affiche maintenant le dernier report.
+            -> CardBoard : Mise à Jour du CardBoard, il affiche maintenant les bonnes informations.
+
+    # Containers :
+        -> Connexion : 
+            -> Ajout d'une checkbox pour rester connecté.
+            -> Ajout d'un message d'erreur en cas d'erreur de mot de passe ou de mail.
+                -> Systéme de Token.
+                    -> amil_connect_token :: LocalStorage :: Token qui gère les informations utilisateur et la connexion.
+                    -> amil_role_token :: SessionStorage :: Token qui gère le rôle de l'utilisateur.
+
+        -> Options : Suppresion du container Options.
+        -> User : Container qui affiche le profil de l'utilisateur.
+
+    # Reducers : 
+        -> lastReportReducer :: Objet qui contient l'ensemble des informations du dernier report.
+
+    # Other :
+        -> Ajout d'un fichier configuration. 
+            -> URL_SERV_BEGGIN :: Contient l'URL de base pour l'accès à l'API REST.
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    CSS - Au niveau du titre de la Biographie dans le profil, il y a un petit espace en dessous.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

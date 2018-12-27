@@ -1,0 +1,134 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 27/12/2018
+#BUILD : SERVER : 1.0.0:002 - DEV
+
+#################################### LAST VERSION ####################################
+-----------------------------------------------------------------------------------------------
+
+# Général : 
+    Un gros travail sur le serveur a été fait (sur les routes) et quelques bug persiste (sur les routes). 
+    Le gros du travail a été fait et la documentation de l'API REST devrait bientôt être réalisée.
+
+-----------------------------------------------------------------------------------------------
+
+# Server :
+
+    # API :
+        -> Inscription des routes.
+            -> User
+                -> GET : /api/v1/user/log/:token
+                -> PUT : /api/v1/user/update/:id
+
+            -> Report
+                -> GET /api/v1/report
+                -> GET /api/v1/report/:id
+                -> POST /api/v1/report/add
+                -> PUT /api/v1/report/update/:id
+                -> DELETE /api/v1/report/delete/:id
+                -> GET /api/v1/report/find/lastreport
+                -> GET /api/v1/report/lastid/last
+                -> GET /api/v1/report/count/all
+
+            -> Task
+                -> GET /api/v1/task
+                -> GET /api/v1/task/:id
+                -> POST /api/v1/task/add
+                -> PUT /api/v1/task/update/:id
+                -> DELETE /api/v1/task/delete/:id
+                -> GET /api/v1/task/count/all
+
+            -> BugTracker
+                -> GET /api/v1/bugtracker
+                -> GET /api/v1/bugtracker/:id
+                -> POST /api/v1/bugtracker/add
+                -> PUT /api/v1/bugtracker/update/:id
+                -> DELETE /api/v1/bugtracker/delete/:id
+                -> GET /api/v1/bugtracker/count/all
+        
+    # Models :
+
+            -> MAIN MODELS
+                -> countMainModel(table) :: Méthode qui compte le nombre d'entrée dans la table.
+                -> verifParamsNumber(params, number) :: Méthode qui vérifie le nombre de paramètres passés.
+                -> lastIDMainModel(table) :: Méthode qui récupére la dernière ID.
+
+            -> USER MODELS
+                -> updateUserModel(table, paramsArray, search) :: Modification de la méthode.
+                -> logUserWithTokenModel(table, req) :: Méthode qui récupére les informations d'un user via un token.
+
+            -> REPORT MODELS
+                -> findAllReportModel(table) :: Méthode qui recherche l'ensemble des reports.
+                -> findOneReportModel(table, req, search) :: Méthode qui recherche un report.
+                -> addReportModel(table, req) :: Méthode qui ajoute un report.
+                -> updateReportModel(table, paramsArray, search) :: Méthode qui modifie un report.
+                -> deleteReportModel(table, id) :: Méthode qui supprime un report.
+                -> countReportModel(table) :: Méthode qui compte le nombre de reports.
+                -> lastIDReportModel(table) :: Méthode qui récupére le dernier ID des reports.
+                -> findLastReportModel(table) :: Méthode qui récupére le dernier report.
+
+            -> TASK MODELS
+                -> findAllTaskModel(table) :: Méthode qui recherche l'ensemble des tasks.
+                -> findOneTaskModel(table, req, search) :: Méthode qui recherche une task. 
+                -> addTaskModel(table, req) :: Méthode qui ajoute une task.
+                -> updateTaskModel(table, paramsArray, search) :: Méthode qui modifie une task.
+                -> deleteTaskModel(table, id) :: Méthode qui supprime une task. 
+                -> countTasktModel(table) :: Méthode qui compte le nombre de tasks.
+
+            -> BUGTRACKER MODELS
+                -> findAllBugTrackerModel(table) :: Méthode qui recherche l'ensemble des bugs. 
+                -> findOneBugTrackerModel(table, req, search) :: Méthode qui recherche un bug. 
+                -> addBugTrackerModel(table, req) :: Méthode qui ajoute un bug.
+                -> updateBugTrackerModel(table, paramsArray, search) :: Méthode qui modifie un bug.
+                -> deleteBugTrackerModel(table, id) :: Méthode qui supprime un bug.
+                -> countBugTrackerModel(table) :: Méthode qui compte le nombre de bugs.  
+
+    # Controllers :
+
+            -> REPORT CONTROLLER
+                -> findAllReportController :: Controller qui recherche l'ensemble des reports.
+                -> findOneReportController :: Controller qui recherche un report.
+                -> addReportController :: Controller qui ajoute un report.
+                -> updateReportController :: Controller qui modifie un report.
+                -> deleteReportController :: Controller qui supprime un report.
+                -> logReportController :: Controller qui connecte un report.
+                -> countReportController :: Controller qui compte le nombre de reports.
+                -> lastIDReportController :: Controller qui récupére le dernier ID des reports.
+                -> findLastReportController :: Controller qui récupére le dernier report.
+
+
+            -> TASK CONTROLLER
+                -> findAllTaskController :: Controller qui recherche l'ensemble des tasks.
+                -> findOneTaskController :: Controller qui recherche une task.
+                -> addTaskController :: Controller qui ajoute une task.
+                -> updateTaskController :: Controller qui modifie une task.
+                -> deleteTaskController :: Controller qui supprime une task.
+                -> countTaskController :: Controller qui compte le nombre de tasks.
+
+            -> BugTracker CONTROLLER
+                -> findAllBugTrackerController :: Controller qui recherche l'ensemble des bugs.
+                -> findOneBugTrackerController :: Controller qui recherche un bug.
+                -> addBugTrackerController :: Controller qui ajoute un bug.
+                -> updateBugTrackerController :: Controller qui modifie un bug.
+                -> deleteBugTrackerController :: Controller qui supprime un bug.
+                -> countBugTrackerController :: Controller qui compte le nombre de bugs.
+
+    # Config :
+        -> Ajout de quelques options d'erreur et succès.
+
+    # Other :
+        -> Mise à Jour du script de création de la BDD. Toutes les tables sont maintenant inscrites.
+        -> Fichier ReadMe réécrit.
+
+-----------------------------------------------------------------------------------------------
+
+# Bug : 
+    - Revoir certaines routes qui fonctionne mal et on besoin d'un /truc pour fonctionner.
+    - Revoir les timestamp de certaines routes qui fonctionne mal.
+
+-----------------------------------------------------------------------------------------------
+
+# Note :
+    - Un refactoring est prévu de l'ensemble des fichiers Models et Controller pour optimiser le tout.
+
+#################################### LAST VERSION ####################################

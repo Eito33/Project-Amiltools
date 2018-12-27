@@ -22,3 +22,7 @@
     text-align: justify;
     box-shadow: 5px 5px 5px #aaa;
 }
+
+#error_connect{
+    display: none;
+}

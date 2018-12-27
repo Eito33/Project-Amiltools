@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import axios from 'axios'
-
+import config from '../config/config.json'
 //Redux
 import { connect } from 'react-redux'
 import { isAuthActions, saveUserActions } from '../actions/index'
@@ -13,10 +13,28 @@ class Connexion extends Component{
 
     state = {
         goToConnect: false,
-        mail: 'labonassedu33@sfr.fr',
+        stayConnect: false,
+        mail: '',
         password: ''
     }
-    
+
+    constructor(props){
+        super(props)
+        const token = localStorage.getItem('amil_connect_token')
+        if(token != null){
+            this.requestLoggedWithToken(token)
+        }
+    }
+
+    handleCloseError = event => {
+        document.getElementById('error_connect').style.display = 'none'
+    }
+
+    handleChangeCheckBoxConnect = event => {
+        const stayConnect = event.target.checked
+        this.setState({stayConnect})
+    }
+
     handleChangeMail = event => {
         const mail = event.target.value
         this.setState({mail})
@@ -30,37 +48,59 @@ class Connexion extends Component{
     handleSubmit = event =>{
         event.preventDefault()
         this.requestLogged()
-        .then((reponse) => {
-            this.props.isAuthActions(true)   
+        .then((response) => {
+            this.props.isAuthActions(true)
             const goToConnect = true
             this.setState({goToConnect})
         })
         .catch((error) => {
-            console.log('------------')
-            console.log('WRONG BAD MAIL OR BAD PASSWORD : ', )
-            console.log('------------')
+            document.getElementById('error_connect').style.display = 'block'
         })
     }
 
-    requestLogged(){
+    requestLoggedWithToken(token){
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:8081/api/v1/user/log', 
-                {
-                    params: {
-                        "mail": this.state.mail,
-                        "password": this.state.password
-                      } 
-                }
-            )
+            axios.get(config.URL_SERV_BEGGIN + '/api/v1/user/log/' + token)
             .then((response) => {
+                //SAVE les données dans le Web API Storage
+                sessionStorage.setItem('amil_role_token', response.data.response[0].grade)
+                //On envoie les infos a saveUser pour redux
                 this.props.saveUserActions(response.data.response[0])
+                //On passe a true le isAuth
+                this.props.isAuthActions(true)
+                //On Connect dans le state
+                const goToConnect = true
+                this.setState({goToConnect})
+
                 resolve(response)
             })
             .catch((error) => reject(error))
         })
     }
-    
-    
+
+    requestLogged(){
+        return new Promise((resolve, reject) => {
+            axios.post(config.URL_SERV_BEGGIN + '/api/v1/user/log',
+                {
+                    params: {
+                        "mail": this.state.mail,
+                        "password": this.state.password
+                      }
+                }
+            )
+            .then((response) => {
+                this.props.saveUserActions(response.data.response[0])
+                sessionStorage.setItem('amil_role_token', response.data.response[0].grade)
+                if(this.state.stayConnect){
+                    localStorage.setItem('amil_connect_token', response.data.response[0].token)
+                }
+                resolve(response)
+            })
+            .catch((error) => reject(error))
+        })
+    }
+
+
     render(){
 
         if(this.state.goToConnect){
@@ -72,6 +112,12 @@ class Connexion extends Component{
                 <div className="container-fluid">
                     <div className="row justify-content-lg-center">
                         <div className="boardConnexion col-lg-5">
+                            <div id="error_connect" className="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>Error: </strong> BAD PASSWORD OR BAD EMAIL
+                                <button onClick={this.handleCloseError} type="button" className="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <div className="titleBoardConnexion">
                                 Connexion
                             </div>
@@ -84,6 +130,12 @@ class Connexion extends Component{
                                     <div className="form-group">
                                         <label htmlFor="password">Password</label>
                                         <input onChange={this.handleChangePassword} type="password" className="form-control" placeholder="Password" />
+                                    </div>
+                                    <div className="form-group form-check form-check-inline">
+                                        <input onChange={this.handleChangeCheckBoxConnect} className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                                            <label className="form-check-label" htmlFor="defaultCheck1">
+                                                Rester Connecté
+                                            </label>
                                     </div>
                                     <button type="submit" className="btn btn-outline-info btn-block">Submit</button>
                                 </form>
@@ -111,35 +163,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Connexion)
-
-
-/*
-
-
-Caractérise la Connexion
-
-Vérifie si Email adress n'est pas vide
-Vérifie si Password n'est pas vide
-Tente une connexion a la BDD
-    -> OUI
-        -> On recherche dans la BDD le champ mail et on voit si l'email existe
-            -> OUI
-                -> On crypte le mot de passe
-                -> On compare les deux mots de passe crypter
-                -> Ils sont identique ? 
-                    -> OUI
-                        -> Alors on connecte et on passe la variable a true
-                    
-                    -> NON
-                        -> On renvoie une erreur
-            
-                -> NON
-                    -> On renvoie une erreur
-
-    -> NON
-        -> Renvoie une Erreur
-
-
-
-
-*/

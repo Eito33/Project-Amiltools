@@ -6,12 +6,19 @@
         "table": "The table does not exist",
         "nothing": "The answer did not return anything",
         "notadduser": "Can not add user...",
+        "notaddreport": "Can not add report...",
+        "notaddtask": "Can not add task...",
+        "notaddBugTracker": "Can not add bug...",
         "elementuse": "The element already exists",
-        "passwordwrong": "Wrong Email or Bad password"
+        "passwordwrong": "Wrong Email or Bad password",
+        "missingparams": "Missing params"
     },
     "success": {
         "deleteitem": "Successfully deleted the item",
         "useradd": "Success : user has been added",
-        "useredit": "Successful user has been successfully edited"
+        "reportadd": "Success : report has been added",
+        "taskadd": "Success : task has been added",
+        "BugTrackeradd": "Success : bug has been signaled",
+        "edit": "Successful your item has been successfully edited"
     }
 }

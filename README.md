@@ -1,7 +1,7 @@
-# AmilTool's - `V. 1.0.0:001 Dev`
+# AmilTool's - `V. 1.0.0:002 Dev`
 ![ImageLOAD](http://image.noelshack.com/fichiers/2018/50/4/1544740136-amiltools.png)
 
-## SOMMAIRE : 
+## SOMMAIRE :
 
 * [Général](https://github.com/Eito33/Project-Phantom#1-général)
 * [Fonctions](https://github.com/Eito33/Project-Phantom#2-fonctions)
@@ -14,7 +14,7 @@
 
 ## 1. Général
 
-AmilTools est une application développer avec react. 
+AmilTools est une application développer avec react.
 Elle a pour vocation à être installé sur un réseau propre (local/web).
 Elle permet aux équipes de gérer plus efficacement leur temps de travail et apporte des outils viables plutôt que devoir télécharger d'autres outils.
 
@@ -23,15 +23,23 @@ C'est une sorte de boîte à outils du développeur qui permet de centraliser un
 Cette application a été développer pour les développeurs d'Amiltone.
 
 Sera défini comme tel.
-1. NavBar : Barre de navigation qui contient le champ de recherche / zone de notification / logo. 
+1. NavBar : Barre de navigation qui contient le champ de recherche / zone de notification / logo.
 2. MenuLeft : Barre de navigation contenant les différents onglets de navigation de l'application.
 3. Fenêtre principale (Grande fenêtre) : L'espace central à droite du MenuLeft affiche l'ensemble des vues appelées et demandées par l'application.
 
-L'ensemble de l'application doit fonctionner sous react.
-Seule techno utilisable :
-1. HTML/CSS
-2. JS
+L'ensemble de l'application est réaliser avec les technologies suivante :
+1. HTML5 / CSS3
+2. JS ES6
 3. React
+4. NodeJS
+
+L'application dispose d'un ensemble client/serveur
+
+Le serveur créer avec NodeJS, gère l'ensemble des routes et tout le back end de l'application.
+Grace a une API REST il renvoie sous format JSON les données qui lui sont demandée.
+
+Le client gère quand a lui l'ensemble des actions utilisateurs et les vues de l'applications.
+Il fait des demandes auprès du serveur.
 
 ------------------------------
 
@@ -87,26 +95,25 @@ Le button contiendra le code générer automatiquement pour enregistrer un RDV l
 
 ### Report :
 1. Affiche dans la grande fenêtre le dernier compte rendu
-2. Affiche dans le menu de gauche l'ensemble des 5 dernier compte rendu sous forme de lien
-    - Un clic sur un lien modifie la grande fenêtre pour afficher le bon compte rendu
-3. Le dernier lien du menu de gauche modifie la grande fenêtre pour faire apparaitre l'ensemble des comptes rendu sauvegarder
-4. Il est possible d'ajouter, modifier, supprimer, archiver les comptes rendu
+2. Un selecteur est disponible en haut de la fenetre pour afficher les comptes rendu.
+    - Un clic sur le selecteur fait apparaitre les comptes rendu enregistrer
+        -> Il suffit de cliquer sur un selecteur pour voir apparaitre le bon compte rendu.
+3. Il est possible d'ajouter, modifier, supprimer, archiver les comptes rendu
 
 Le but du report (Compte rendu) et d'apporter les informations retransmises lors des réunions ou des rassemblements.
 Il y a deux parties distinctes au report :
     - L'écriture :
         - Se fera via une fenêtre ouverte et en markdown (utiliser la librairie marked)
         - L'affichage des comptes rendu écrit.
-    
-Au besoin on pourra définir qui a accés en lecture-écriture au markdown.
+Au besoin on pourra définir qui a accés en lecture-écriture au markdown via les roles.
 L'utilisateur se connecte et à la possibilité d'écrire un nouveau compte rendu avec le markdown.
 Une fois celui-ci terminé, l'utilisateur a la possibilité de modifier, de supprimer ou d'enregistrer son document.
 
 Le titre n'est pas changeable il aura toujours la forme suivante :
     - Compte Rendu N°[ID] du "13/12/2018"
 
-- Si l'utilisateur enregistre son document, il est automatiquement synchronisé dans firebase.
-    Il s'affichera en tete de liste dans le menu de gauche de l'onglet report et prendra automatiquement la place du dernier report dans la fenêtre centrale de l'application.
+- Si l'utilisateur enregistre son document, il est automatiquement enregistrer dans la BDD.
+    Il s'affichera en tete de liste dans le selecteur du haut et prendra automatiquement la place du dernier report dans la fenêtre centrale de l'application.
 
 - Si l'utilisateur souhaite modifier un report, celui-ci y a accés via un bouton quand on affiche un report.
     - Cela a pour effet de charger dans une nouvelle fenêtre le markdown déja écrit. L'utilisateur a ensuite la possibilité de sauvegarder c'est modification ou de supprimer le report.
@@ -116,7 +123,7 @@ Le titre n'est pas changeable il aura toujours la forme suivante :
 ### Task :
 Task est un planificateur de tâche, il permet l'ajout de dead line dans les tâches a accomplir
 il est possible d'ajouter, éditer, supprimer, valider et de voir le détail d'une tâche
-Une tâche est forcément assignée à un utilisateur valide. 
+Une tâche est forcément assignée à un utilisateur valide.
     -Si durant la saisie de la tâche et l'assignation de celle ci a un utilisateur et que celui-ci n'est pas trouvé.
     la tâche ne peut etre enregistrer
 Une tâche comprend :
@@ -127,22 +134,21 @@ Une tâche comprend :
 5. Un contenu qui explique la tâche
 
 Le dernier jour de la tâche celle-ci devient oranger, elle passera à rouge quelques heures avant la fin de la tâche.
-Une fois le délai écoulé ou alors si elle est validé la tâche est automatiquent archiver. 
+Une fois le délai écoulé ou alors si elle est validé la tâche est automatiquent archiver.
 Il est possible de désarchiver une tâche
 
-Les tâches sont un élément essentiel de l'application, chaque utilisateur pourra définir c'est propre tâche par projet.
+Les tâches sont un élément essentiel de l'application, chaque utilisateur pourra définir c'est propre tâche.
 Il pourra ainsi visualiser très facilement quelle tâche il doit mener à bien en premier.
-Les tâche sont réalisés JS principalement.
+
 Le but est d'afficher un tableau styliser avec html/css et d'apporter le maximum d'informations rapidement sur les tâche en cours.
 
-Le tout sera bien sur synchronisé avec firebase.
-L'utilisateur peut créer une tâche celle-ci sera automatiquement enregistrer dans firebase une fois valider.
+L'utilisateur peut créer une tâche celle-ci sera automatiquement enregistrer dans la BDD une fois valider.
 L'utilisateur a la possibilité via un bouton prévu a cet effet de modifier une tâche.
 L'utilisateur a la possibilité via un bouton prévu a cet effet de supprimer une tâche
 L'utilisateur a la possibilité via un bouton prévu a cet effet d'archiver une tâche
 
 Chacune des options developpées plus haut a pour effet de :
-1. Enregistrer dans firebase une nouvelle tâche
+1. Enregistrer dans la bdd une nouvelle tâche
 2. De charger une nouvelle tâche et l'utilisateur peut ensuite enregistrer ou supprimer sa tâche
 3. De supprimer une tâche via un id, une demande de confirmation sera demandée.
 4. D'archiver une tâche celle-ci apparaîtra alors en lecture-seule et ne pourra plus être modifier.
@@ -167,24 +173,21 @@ Il est possible de désarchiver un bug.
 
 Le bugtracker est un élément essentiel de l'application, chaque utilisateur pourra voir les différents bugs signaler par projet.
 Il pourra ainsi visualiser très facilement quel bug est présent et disponible pour être corrigé.
-Le bugtracker est réalisé en JS principalement.
 Le but est d'afficher un tableau styliser avec html/css et d'apporter le maximum d'informations rapidement sur les bug en cours.
-Le tout sera bien sur synchronisé avec firebase.
+Le tout sera bien sur synchronisé avec la BDD.
 
-Chaque utilisateur a la possibilité de signaler un bug. Cependant il devra être validé par un developper.
-Le terme validé signifie la procédure de validation d'un bug elle est à l'appréciation de chacun.
-L'utilisateur peut créer/signaler un bug celle-ci sera automatiquement enregistrer dans firebase une fois valider.
+L'utilisateur peut créer/signaler un bug celle-ci sera automatiquement enregistrer dans la BDD une fois valider.
 L'utilisateur a la possibilité via un bouton prévu a cet effet de modifier un bug.
 L'utilisateur a la possibilité via un bouton prévu a cet effet de supprimer un bug
 L'utilisateur a la possibilité via un bouton prévu a cet effet d'archiver/désarchiver un bug
 
 Chacune des options developpées plus haut a pour effet de :
-1. Enregistrer dans firebase un nouveau bug
+1. Enregistrer dans la bdd d'un nouveau bug
 2. De charger un bug et l'utilisateur peut ensuite enregistrer ou supprimer son bug
 3. De supprimer un bug via un id, une demande de confirmation sera demandée.
 4. D'archiver un bug si celui-ci est traité et valider celui-ci apparaitra alors en lecture-seule et ne pourra plus être modifier mais pourra etre desarchivé.
 
-### User: 
+### User:
 La partie user concerne les options et informations liées a l'utilisateur.
 Celui-ci pourra retrouver sur sont profile en cliquant en haut à droite sur l'icone user :
 1. Nom + Prénom
@@ -197,21 +200,18 @@ Celui-ci pourra retrouver sur sont profile en cliquant en haut à droite sur l'i
 
 Il lui sera possible de modifier l'ensemble des informations déja enregistrer (Nom, prénom, mail, mdp, métier, biographie) hors avatar qui lui sera attribué automatiquement à la connexion.
 L'utilisateur pourra depuis son panel user, valider, éditer, supprimer, archiver des tâches, bug, via des icônes prévues a cet effet.
+A la connexion l'utilisateur peut etres amener a cocher une case lui demandant si il souhaite rester connecter. Cela a pour effet d'inscrire un token dans le local storage et l'utilisateur ne sera déconnecter que si il clic sur deconnexion.
 L'utilisateur aura également la possibilité de se déconnecter ce qui aura pour effet de le renvoyer sur la page de connexion.
 
 L'utilisateur devra se connecter via différentes options :
-1. Compte amiltone (@amiltone.fr)
-2. Compte google
+1. Compte amiltone (@amiltone.fr) <- Pour le moment uniquement
 
 Une fois connecté celui-ci aura accès à l'application. Le cas échéant on lui demandera de se connecter.
-L'utilisateur à accès a l'ensemble des fonctionnalités. 
-Le components user devra gérer les informations de l'utilisateur ou qu'il soit notamment l'id et le role.
-
-L'ensemble du state user devra être remonter dans un component dispatcher qui gére l'ensemble des states.
+L'utilisateur à accès a l'ensemble des fonctionnalités.
 
 ### Doc:
 
-Disponible bientôt!
+Accessible [ici](https://devgabinrimbault.gitbook.io/amiltool-s/)
 
 ------------------------------
 

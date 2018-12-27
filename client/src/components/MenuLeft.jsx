@@ -11,10 +11,9 @@ class MenuLeft extends Component{
                     <ul className="list-unstyled navLeftContent">
                         <li><Link to='/'><i className="fas fa-tachometer-alt"></i> DashBoard</Link></li>
                         <li><Link to='/calendar'><i className="fas fa-calendar-alt"></i> Calendar</Link></li>
-                        <li><Link to='/report'><i className="fas fa-newspaper"></i> Report</Link></li>    
+                        <li><Link to='/report'><i className="fas fa-newspaper"></i> Report</Link></li>
                         <li><Link to='/task'><i className="fas fa-tasks"></i> Task <i className="icon-nav-right fas fa-angle-right"></i></Link></li>
                         <li><Link to='/bugtracker'><i className="fas fa-bug"></i> BugTracker <i className="icon-nav-right fas fa-angle-right"></i></Link></li>
-                        <li><Link to='/options'><i className="fas fa-wrench"></i> Options</Link></li>
                     </ul>
                 </section>
             </Fragment>

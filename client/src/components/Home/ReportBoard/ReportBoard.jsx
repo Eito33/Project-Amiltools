@@ -1,37 +1,51 @@
-import React, { Fragment } from 'react'
+import React, {Component, Fragment} from 'react'
+import axios from 'axios'
+import config from '../../../config/config.json'
+
+//Redux
+import { connect } from 'react-redux'
+import { getLastReportActions } from '../../../actions/index'
+import { bindActionCreators } from 'redux'
 
 import './ReportBoard.css'
 
-const ReportBoard = () => {
+class ReportBoard extends Component{
 
-    return(
-        <Fragment>
-            <hr />
-            <section className="report">
-                    <div className="titleReport">
-                        <h2>Report</h2>
-                    </div>
-                    <div className="contentReport">
-                        <div className="titleReportContent">
-                            Report N°23 <span className="dateReport">: 12/12/2018</span>
+    componentDidMount(){
+        axios.get(config.URL_SERV_BEGGIN + '/api/v1/report/find/lastreport') 
+        .then((response) => this.props.getLastReportActions(response.data.response[0]))
+        .catch((error) => console.log('NO REPORT'))
+    }
+
+    render(){
+        return(
+            <Fragment>
+                <hr />
+                <section className="report">
+                        <div className="titleReport">
+                            <h2>Report</h2>
                         </div>
-                         <div className="cardReportContent">
-                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis tristique velit vitae iaculis. Nulla quis posuere sapien, id rhoncus sapien. Maecenas euismod lectus a consequat luctus. Donec tincidunt ex sit amet tristique efficitur. Pellentesque hendrerit imperdiet mi, ut aliquam quam lobortis eu. Integer nec lectus sit amet tellus porttitor faucibus. Nam mattis vestibulum lacus ut elementum. Etiam vitae interdum tortor, sit amet consectetur ipsum. Nam metus diam, porttitor eu tellus id, consectetur sollicitudin quam. Fusce lobortis arcu ac dolor cursus tincidunt. Proin sollicitudin dolor quis lorem pharetra vulputate.</p>
-                             <br />
-                                 <ul>
-                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                                    <li>Donec malesuada ipsum vitae lectus accumsan lacinia.</li>
-                                    <li>Nulla at leo vel magna rhoncus posuere et eu ante.</li>
-                                    <li>Sed semper neque et enim condimentum, sed ultricies dui vestibulum.</li>
-                                    <li> Cras elementum nunc vel tempor mollis.</li>
-                                </ul>
-                            <p>In pharetra est id orci maximus, id mollis ipsum accumsan. Proin ut pulvinar nisi. In non pharetra elit. Donec faucibus dapibus hendrerit. Nulla ipsum nunc, tempus eget tortor vel, laoreet sodales ipsum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam tempor lacus diam, nec ultrices velit eleifend non. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla faucibus molestie purus. Fusce malesuada nec tellus feugiat varius. Aenean sed tincidunt dui, id consequat eros. Pellentesque eu turpis nec lectus pretium pellentesque non id dolor. Praesent orci risus, luctus ac neque id, varius dignissim mauris.<br /> Vivamus ut libero vel enim malesuada facilisis. Maecenas odio odio, dignissim eget purus ut, accumsan aliquet augue.</p>
-                            <p><br /><a href="lienachanger.html">Read More ...</a></p>
-                         </div>
-                    </div>
-                </section>
-        </Fragment>
-    )
+                        <div className="contentReport">
+                            <div className="titleReportContent">
+                                {this.props.lastReportReducer.title} <span className="dateReport">: {this.props.lastReportReducer.create_at}</span>
+                            </div>
+                            <div className="cardReportContent">
+                                <p>{this.props.lastReportReducer.content}</p>
+                                <div>by <span className='author'>{this.props.lastReportReducer.author}</span></div>   
+                            </div>
+                        </div>
+                    </section>
+            </Fragment>
+        )
+    }
 }
 
-export default ReportBoard
+const mapStateToProps = (state) => {
+    return {lastReportReducer: state.lastReportReducer}
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({getLastReportActions:getLastReportActions}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReportBoard)

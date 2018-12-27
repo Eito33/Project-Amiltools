@@ -20,6 +20,8 @@ class User extends Component{
     handleDeconnexion = event => {
         this.props.saveUserActions('')
         this.props.isAuthActions(false)
+        localStorage.removeItem('amil_connect_token')
+        sessionStorage.removeItem('amil_role_token')
         return <Redirect push to='/' />
     }
 

@@ -9,7 +9,6 @@ import Calendar from '../containers/Calendar';
 import Report from '../containers/Report';
 import Task from '../containers/Task';
 import BugTracker from '../containers/BugTracker';
-import Options from '../containers/Options';
 import User from '../containers/User';
 import NotFound from './NotFound'
 import Connexion from '../containers/Connexion'
@@ -36,7 +35,6 @@ class App extends Component {
                 <Route exact path='/report' component={RequireisAuth(Report)} />
                 <Route exact path='/task' component={RequireisAuth(Task)} />
                 <Route exact path='/bugtracker' component={RequireisAuth(BugTracker)} />
-                <Route exact path='/options' component={RequireisAuth(Options)} />
                 <Route exact path='/user' component={RequireisAuth(User)} />
                 <Route component={NotFound} />
               </Switch>

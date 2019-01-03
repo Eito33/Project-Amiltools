@@ -1,0 +1,73 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 27/12/2018
+#BUILD : CLIENT : 1.0.0:003 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : REPORT COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    Le composant report est enfin disponible, il fonctionne entièrement et est indépendant des autres logiciels.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+
+    # Report Component :
+        -> Le container report a été ajouté, il permet l'ajout, l'édition et la suppression de comptes rendus rendus directement partager sur l'application.
+
+        -> Ajout d'une barre de sélection qui permet de choisir le report que l'on souhaite.
+        Celui-ci s'affiche maintenant dans la fenêtre principale une fois sélectionner.
+
+        -> Ajout d'un éditeur de markdown directement dans l'application. Les utilisateurs peuvent écrire
+        librement, ou utiliser le markdown pour mettre en forme.
+
+        -> Ajout des fonctions lié aux containers :
+            -> handleSelectChange() :: Fonction qui récupère l'event et l'envoie à la fonction qui récupère le report
+            -> requestGetReport() :: Fonction qui envoie une requête pour récupérer le report demander et le met dans le reducer en fonction de l'id
+            -> handleClick() :: Fonction qui Ouvre le popup
+            -> onClosePopup() :: Fonction qui ferme le popup
+            -> renderSelect() :: Fonction qui fait un render des options dans le select en fonction du nombre de report dans le state
+            -> renderReportMarked() :: Fonction qui fait un rendu du Markdown
+		    -> convertDate() :: Fonction qui convertit la date en date fr
+            -> componentDidMount() :: Quand Report.jsx est monté fait une requête Ajax pour récupérer tous les reports et les mettre dans le state.
+
+    # Popup Report :
+        -> Le Popup d'ajout, d'édition, de suppression est géré dynamiquement.
+        Les informations sont directement envoyé dans le component Popup qui affiche dynamiquement le bon popup.
+
+        -> Ajout des fonctions lié aux containers :
+            -> handleChangeTitle() :: Fonction qui gère le changement de titre durant l'ajout
+            -> handleChangeContent() :: Fonction qui gère le changement de contenu durant l'ajout
+            -> handleEditTitle() :: Fonction qui gère le changement de titre durant l'édition
+            -> handleEditContent() :: Fonction qui gère le changement de contenu durant l'édition
+            -> onClickDelete() :: Fonction qui gère la suppression d'un élément
+            -> onClickNew() :: Fonction qui gère l'ajout d'un élément
+            -> onClickEdit() :: Fonction qui gère l'édition d'un élément
+            -> checkPopup() :: Fonction qui gère l'affichage dynamique du popup
+            -> displayPopupDelete() :: Fonction qui gère l'affichage du popup de suppression
+            -> displayPopupEdit() :: Fonction qui gère l'affichage du popup d'édition
+            -> displayPopupNew() :: Fonction qui gère l'affichage du popup d'ajout
+
+    # ReportCardBoard :
+        -> Le dernier report s'affiche dans la cardboard.
+        -> Seul les 500 premiers caractères sont affiché.
+        -> Un lien ReadMore mène directement au dernier report demandé.
+
+    # Other :
+        -> Fichier de configuration :
+            -> URL_API_REST :: Contient l'accés a la v1 de l'API REST.
+
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    CSS - Au niveau du titre de la Biographie dans le profil, il y a un petit espace en dessous.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

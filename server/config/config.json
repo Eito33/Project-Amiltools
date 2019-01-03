@@ -1,6 +1,7 @@
 {
     "routeApi": "/api/v1/",
     "port": 8081,
+    "version": "1.0.0:002",
     "error": {
         "mail": "This email is already used",
         "table": "The table does not exist",

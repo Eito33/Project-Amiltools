@@ -30,3 +30,11 @@
 .author{
     font-weight: bold;
 }
+
+.contentReport>p>img{
+    max-width: 100%;
+}
+
+#alertReport{
+    display: none;
+}

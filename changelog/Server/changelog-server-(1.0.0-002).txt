@@ -45,7 +45,7 @@
                 -> PUT /api/v1/bugtracker/update/:id
                 -> DELETE /api/v1/bugtracker/delete/:id
                 -> GET /api/v1/bugtracker/count/all
-        
+
     # Models :
 
             -> MAIN MODELS
@@ -122,7 +122,7 @@
 
 -----------------------------------------------------------------------------------------------
 
-# Bug : 
+# Bug :
     - Revoir certaines routes qui fonctionne mal et on besoin d'un /truc pour fonctionner.
     - Revoir les timestamp de certaines routes qui fonctionne mal.
 

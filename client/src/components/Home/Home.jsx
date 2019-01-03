@@ -12,8 +12,11 @@ class Home extends Component{
             <Fragment>
                 <h2>DashBoard</h2>
                     <hr />
-                
                 <CardBoard />
+                <hr />
+                <div className="alert alert-success" role="alert">
+                    <strong>Well done!</strong> You build is 1.0.0:003
+                </div>
                 <ReportBoard />
                 <BugTrackerBoard />
             </Fragment>

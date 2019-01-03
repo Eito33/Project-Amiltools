@@ -79,7 +79,7 @@ module.exports = {
                     const long = Object.keys(paramsArray).length
                     for(let key in paramsArray){
                         if(i < long){
-                            data = data + key + '=' + "'" + paramsArray[key] + "'" + ', '
+                            data = data + key + '=' + '"' + paramsArray[key] + '"' + ', '
                         }else{
                             data = data + key + '=' + "'" + paramsArray[key] + "'"
                             console.log('------------');
@@ -128,7 +128,7 @@ module.exports = {
 
     verifParamsNumber(params, number){
         if(params === number) return true
-        else return false
+            else return false
     },
 
     lastIDMainModel(table){

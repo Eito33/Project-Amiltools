@@ -9,7 +9,7 @@ module.exports = {
                 }
             )
         }else{
-            res.status(404).json(
+            res.status(400).json(
                 {
                     "result": false,
                     error

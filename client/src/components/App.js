@@ -24,6 +24,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header />
+        <div id="overlay"></div>
         <div className="container-fluid">
           <div className="row">
           <MenuLeft />

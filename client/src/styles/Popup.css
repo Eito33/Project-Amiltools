@@ -1,0 +1,45 @@
+#popup{
+    position: absolute;
+    top: 50px; left: 50%;
+    transform: translateX(-50%);
+    min-width: 50%;
+    z-index: 5000;
+}
+
+#popupBoard{
+    position: absolute;
+    top: 50px; left: 50%;
+    transform: translateX(-50%);
+    min-width: 90%;
+    z-index: 5000;
+}
+
+.closeItem{
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #DC3545;
+}
+
+.popupContent{
+    box-shadow: 5px 5px 4px #aaa;
+    background-color: white;
+    padding: 25px;
+    color: black;
+    border-left: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    text-align: justify;
+}
+
+.popupContent>button{
+    margin-right: 25px;
+}
+
+.cardReportContent>button{
+    margin-right: 25px;
+}
+
+.textareaPopup{
+    min-height: 300px;
+}

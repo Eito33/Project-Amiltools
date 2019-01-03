@@ -6,8 +6,6 @@ const ReportController = require('./controllers/report_controller')
 const TaskController = require('./controllers/task_controller')
 const BugTrackerController = require('./controllers/bugtracker_controller')
 
-
-//TODO: Revoir les timestamp
 //TODO: Revoir certaines route qui fonctionne mal et on besoin d'un /truc pour fonctionner
 
 
@@ -91,10 +89,10 @@ module.exports = function(server){
 
     //Default
     server.use((req, res) => {
-        res.status(200).json(
+        res.status(404).json(
             {
-                "result": "false",
-                'response': 'Error: Check documentation of API'
+                "success": false,
+                "message": "Check Documentation of API"
             }
         )
     })

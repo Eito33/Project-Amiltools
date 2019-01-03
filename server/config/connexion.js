@@ -25,29 +25,3 @@ class MySQLConnect{
 
 
 module.exports = MySQLConnect
-
-
-
-
-
-
-
-
-/*
-
-
-
-*/
-
-/*
-On veut savoir si il y a déja une connexion a mysql 
-
-1- On créer une class mysql
-2- On créer une méthode mysql
-  - Methode qui va vérifier si il y a déja une instance de mysql
-      -> Si oui elle renvoie cette instance
-      -> Si non elle créer une instance et la return
-
-
-
-*/

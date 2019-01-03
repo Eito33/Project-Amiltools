@@ -1,3 +1,18 @@
 .menuReportButton>button{
     margin-right: 25px;
 }
+
+.author{
+    font-weight: bold;
+}
+
+.menuReport{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.contentReport>p>img{
+    max-width: 100%;
+}
+

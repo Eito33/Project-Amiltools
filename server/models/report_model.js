@@ -27,12 +27,18 @@ module.exports = {
             Model.verifTable(table)
             .then((response) => {
                 const date = Date.now()
+                console.log('DATE : ', date)
                 const long = Object.keys(req).length
-
-                console.log('Long = ', long)
                 if(Model.verifParamsNumber(long, 3)){
-                    DB.query(`INSERT INTO ${table}(title, content, author, create_at) VALUES ("${req.title}", "${req.content}", "${req.author}", "${date}")`, (err, result) => {
-                        if(err) reject(config.error.notaddreport)
+                    const treatedText = req.content.replace(/"/g, "&quot;");
+                    console.log('------------')
+                    console.log('Request addReport : ' + `INSERT INTO ${table}(title, content, author, create_at) VALUES ("${req.title}", "${treatedText}", "${req.author}", "${date}")`)
+                    console.log('------------')
+                    DB.query(`INSERT INTO ${table}(title, content, author) VALUES ("${req.title}", "${treatedText}", "${req.author}")`, (err, result) => {
+                        if(err) {
+                            console.log('Error : ', err)
+                            reject(config.error.notaddreport)
+                        }
                         else resolve(config.success.reportadd)
                     })
                 }else{
@@ -44,7 +50,6 @@ module.exports = {
     },
 
     updateReportModel(table, paramsArray, search){
-        paramsArray['update_at'] = Date.now()
         return new Promise((resolve, reject) => {
             Model.updateMainModel(table, paramsArray, search)
             .then((response) => resolve(response))

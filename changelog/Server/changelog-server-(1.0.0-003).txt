@@ -1,0 +1,94 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 09/01/2019
+#BUILD : SERVER : 1.0.0:003 - DEV
+
+#################################### LAST VERSION ####################################
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    !!! Bonne Année 2019 a tous et a toutes !!!!
+    -> De gros changements ont eu lieu sur le serveur. L'arrivée des middlewares sur les routes.
+    Ajout d'un système d'API KEY, modification des tokens.
+
+-----------------------------------------------------------------------------------------------
+
+# Server :
+
+    # API KEY:
+        L'ajout des API KEY devenait indispensable pour protéger les routes.
+        Elles sont maintenant générées par le serveur pour chaque membres enregistrer en tant qu'Admin.
+
+        -> Une API Key est automatiquement générée pour chaque membre enregistré en tant qu'Admin.
+        -> Elle contient un nombre défini de caractères générer aléatoirement et enregistrer à deux endroits en BDD.
+        -> Une dans amil_user dans l'entrée de l'utilisateur inscrit et une autre dans la nouvelle table amil_api_key.
+        -> Un Administrateur peut générer une APIKEY pour n'importe quelle utilisateur.
+
+    # TOKEN:
+        Les tokens sont générés maintenant de manière aléatoire par le serveur et non plus par bcrypt.
+        En effet, un bug (lié à bcrypt) empêchait l'utilisation de certains tokens sur les routes.
+
+        -> Chaque Token est généré de manière aléatoire et contient un nombre définit de caractères.
+
+    # Router:
+        -> finduser/:name :: Route qui permet de rechercher les informations d'un profil.
+        -> searchUser/:request :: Route qui permet d'effectuer des recherches par prénom et nom.
+        -> getAllrole/:api_key :: Route qui permet de renvoyer l'ensemble des informations de tous les grades depuis amil_grade.
+        -> user/generateApiKey/:api_key :: Route qui permet de générer une API KEY.
+        -> user/deleteApiKey/:id/:api_key :: Route qui permet de supprimer une API KEY.
+        -> /api/v1/getRole/* :: Route qui permet de renvoyer l'ensemble des informations du grade depuis amil_grade.
+        -> user/log/token/:token :: Modification sur le chemin d'accès.
+
+        -> Modification des routes.
+            -> Si vous appelez une route qui demande une api key et que vous n'avez pas d'api key.
+               vous n'aurez accès cas des informations basiques.
+            -> Si vous appelez une route avec une api key vous aurez accès à l'ensemble des informations.
+
+        -> SANS API KEY - Ceci fonctionne pour toutes les routes.
+            -> /api/v1/user/:api_key :: Accés uniquement à nom, prénom, mail, role, job, team.
+            -> /api/v1/user/:id/:api_key :: Accés uniquement à nom, prénom, mail, role, job, team.
+            -> /api/v1/user/add/:api_key :: Vous aurez une erreur.
+            -> /api/v1/user/delete/:id/:api_key :: Vous aurez une erreur.
+            -> /api/v1/user/update/:id/:api_key :: Accés uniquement aux données comprises dans le fichier config.
+
+    # Models:
+
+        MainModel:
+            -> saveApiKey :: Fonction qui permet l'enregistrement de l'api key dans la BDD.
+            -> generateApiKEY :: Fonction qui permet de générer une api key suivant un nombre de caractères prédéfinis.
+            -> generateToken :: Fonction qui permet de générer un token suivant un nombre de caractères prédéfinis.
+            -> findMainModel :: Modification cette fonction renvoie maintenant 3 options.
+                -> Si result <= 0 renvoie resolve avec un objet isEmpty = 0 (pour réaliser des tests dessus).
+                -> Si error alors on reject(error).
+                -> Si on a une réponse on resolve(true).
+
+        UserModel:
+            -> defineRole :: Fonction qui permet au serveur de définir un rôle a l'enregistrement d'un utilisateur.
+            -> roleUserModel :: Fonction qui retourne les informations enregistrer dans amil_grade.
+            -> addUserModel() :: Modification sur la fonction qui devient plus clair.
+            -> subscribeUserInBDD()) :: Fonction qui prend le relais et permet d'ajouter un utilisateur en BDD.
+            -> subscribeApiKey() :: Fonction qui permet d'enregistrer une APIKEY.
+
+    # Config:
+        -> nbCaractToken :: Définit un nombre de caractères minimum pour la génération du token. Définit par défaut à 50.
+        -> nbCaractApi :: Définit un nombre de caractères minimum pour la génération de l'api_key.  Définit par défaut à 30.
+        -> valueMinAdmin :: Valeur du rôle Admin, définit par defaut à 100
+        -> valueMinManager :: Valeur du rôle Manager, définit par defaut à 50
+
+    # BDD:
+        Ajout de nouvelle Table :
+        -> amil_api_key : Contient les api key distribués et relié à l'id de l'utilisateur
+        -> amil_role : Contient la liste des rôles et leur valeur
+
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    FIX -> Revoir les timestamp de certaines routes qui fonctionne mal.
+    FIX -> La biographie ne s'enregistre pas
+    FIX -> L'édition d'un report ne fonctionne pas
+    FIX -> Revoir certaines routes qui fonctionne mal et on besoin d'un /truc pour fonctionner.
+
+-----------------------------------------------------------------------------------------------
+
+#################################### LAST VERSION ####################################

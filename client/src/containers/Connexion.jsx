@@ -3,7 +3,7 @@ import axios from 'axios'
 import config from '../config/config.json'
 //Redux
 import { connect } from 'react-redux'
-import { isAuthActions, saveUserActions } from '../actions/index'
+import { isAuthActions, saveUserActions, getRoleActions } from '../actions/index'
 import { bindActionCreators } from 'redux'
 import {Redirect} from 'react-router-dom'
 
@@ -60,19 +60,16 @@ class Connexion extends Component{
 
     requestLoggedWithToken(token){
         return new Promise((resolve, reject) => {
-            axios.get(config.URL_SERV_BEGGIN + '/api/v1/user/log/' + token)
+            axios.get(config.URL_SERV_BEGGIN + '/api/v1/user/log/token/token=' + token)
             .then((response) => {
-                //SAVE les données dans le Web API Storage
-                sessionStorage.setItem('amil_role_token', response.data.response[0].grade)
-                //On envoie les infos a saveUser pour redux
                 this.props.saveUserActions(response.data.response[0])
                 //On passe a true le isAuth
                 this.props.isAuthActions(true)
                 //On Connect dans le state
                 const goToConnect = true
                 this.setState({goToConnect})
-
-                resolve(response)
+                //On envoie a requestRole pour récupérer les informations du role et les mettre dans redux
+                resolve(this.requestRole(response.data.response[0]))
             })
             .catch((error) => reject(error))
         })
@@ -89,14 +86,27 @@ class Connexion extends Component{
                 }
             )
             .then((response) => {
+
                 this.props.saveUserActions(response.data.response[0])
-                sessionStorage.setItem('amil_role_token', response.data.response[0].grade)
+
                 if(this.state.stayConnect){
                     localStorage.setItem('amil_connect_token', response.data.response[0].token)
                 }
-                resolve(response)
+                //On envoie a requestRole pour récupérer les informations du role et les mettre dans redux
+                resolve(this.requestRole(response.data.response[0]))
             })
             .catch((error) => reject(error))
+        })
+    }
+
+    requestRole(response){
+        //On requete maintenant sur la table amil_grade pour récupérer les infos du role
+        axios.get(config.URL_SERV_BEGGIN + '/api/v1/getRole/' + response.role)
+        .then((response) => {
+            //On insére dans le tableau les données
+            this.props.getRoleActions(response.data.response)
+            //On enregistre le token
+            return true
         })
     }
 
@@ -151,14 +161,16 @@ class Connexion extends Component{
 const mapStateToProps = (state) => {
     return {
         isAuthReducer: state.isAuthReducer,
-        saveUserReducer: state.saveUserReducer
+        saveUserReducer: state.saveUserReducer,
+        getRoleReducer: state.getRoleReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         isAuthActions:isAuthActions,
-        saveUserActions:saveUserActions
+        saveUserActions:saveUserActions,
+        getRoleActions:getRoleActions
     }, dispatch)
 }
 

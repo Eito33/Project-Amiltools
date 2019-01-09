@@ -2,3 +2,7 @@
     margin-right: 25px;
     color: #17a2b8;
 }
+
+.placeholderColorWhite::placeholder{
+    color: white;
+}

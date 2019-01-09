@@ -43,3 +43,11 @@
 .textareaPopup{
     min-height: 300px;
 }
+
+.passwordButton>input{
+    margin-bottom: 5px;
+}
+
+#popupDisplay{
+    display: none;
+}

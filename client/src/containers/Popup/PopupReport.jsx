@@ -22,7 +22,7 @@ class PopupReport extends Component{
             "title": "",
             "content": "",
             "author": this.props.saveUserReducer.firstname + " " + this.props.saveUserReducer.lastname
-        }
+        },
     }
 
     componentDidMount(){
@@ -57,7 +57,9 @@ class PopupReport extends Component{
     }
 
     onClickDelete = () => {
-        axios.delete(config.URL_SERV_BEGGIN + config.URL_API_REST + 'report/delete/' + this.props.lastReportReducer.id)
+        axios.delete(config.URL_SERV_BEGGIN + config.URL_API_REST +
+             'report/delete/' + this.props.lastReportReducer.id +
+             '/api_key=' + this.props.saveUserReducer.api_key)
         .then((response) => {
             document.getElementById('overlay').style.visibility = "hidden"
             this.props.history.push('/')
@@ -66,7 +68,8 @@ class PopupReport extends Component{
     }
 
     onClickNew = () => {
-        axios.post(config.URL_SERV_BEGGIN + config.URL_API_REST + 'report/add',
+        axios.post(config.URL_SERV_BEGGIN + config.URL_API_REST + 
+                    'report/add/api_key=' + this.props.saveUserReducer.api_key,
                 {
                     params: {
                         "title": this.state.newReport.title,
@@ -80,7 +83,9 @@ class PopupReport extends Component{
     }
 
     onClickEdit = () => {
-        axios.put(config.URL_SERV_BEGGIN + config.URL_API_REST + 'report/update/' + this.props.lastReportReducer.id, 
+        axios.put(config.URL_SERV_BEGGIN + config.URL_API_REST + 
+                'report/update/' + this.props.lastReportReducer.id +
+                '/api_key=' + this.props.saveUserReducer.api_key, 
             {
                 params: {
                     "title": this.state.editReport.title,
@@ -132,13 +137,13 @@ class PopupReport extends Component{
                                 </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="assignedto" className="col-sm-2 col-form-label">Author</label>
+                            <label htmlFor="author" className="col-sm-2 col-form-label">Author</label>
                                 <div className="col-sm-10">
                                     <input disabled type="text" className="form-control" id="author" placeholder={this.state.editReport.author} />
                                 </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="state" className="col-sm-2 col-form-label">Content</label>
+                            <label htmlFor="contentReport" className="col-sm-2 col-form-label">Content</label>
                                 <div className="col-sm-10">
                                     <textarea onChange={this.handleEditContent} className="textareaPopup form-control" rows="3" value={this.state.editReport.content}></textarea>
                                 </div>
@@ -171,13 +176,13 @@ class PopupReport extends Component{
                                 </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="assignedto" className="col-sm-2 col-form-label">Author</label>
+                            <label htmlFor="author" className="col-sm-2 col-form-label">Author</label>
                                 <div className="col-sm-10">
                                     <input disabled type="text" className="form-control" id="author" placeholder={this.state.newReport.author} />
                                 </div>
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="state" className="col-sm-2 col-form-label">Content</label>
+                            <label htmlFor="contentReport" className="col-sm-2 col-form-label">Content</label>
                                 <div className="col-sm-10">
                                     <textarea onChange={this.handleChangeContent} className="textareaPopup form-control" rows="3" defaultValue={this.state.newReport.content}></textarea>
                                 </div>

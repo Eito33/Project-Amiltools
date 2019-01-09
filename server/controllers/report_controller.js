@@ -16,21 +16,45 @@ exports.findOneReportController = (req, res) => {
 }
 
 exports.addReportController = (req, res) => {
-    ReportModel.addReportModel(tableMembers, req.body.params)
-    .then((response) => MainController.validFunction(true, res, response, ''))
-    .catch((error) => MainController.validFunction(false, res, '', error))
+    if(req.informationsUser === 'noapikey'){
+        res.status(401).json(
+            {
+                "error": false,
+                "message": config.error.api_key_not_allowed
+        })
+    }else{
+        ReportModel.addReportModel(tableMembers, req.body.params)
+        .then((response) => MainController.validFunction(true, res, response, ''))
+        .catch((error) => MainController.validFunction(false, res, '', error))
+    }
 }
 
 exports.updateReportController = (req, res) => {
-    ReportModel.updateReportModel(tableMembers, req.body.params, req.params.id)
-    .then((response) => MainController.validFunction(true, res, response, ''))
-    .catch((error) => MainController.validFunction(false, res, '', error))
+    if(req.informationsUser === 'noapikey'){
+        res.status(401).json(
+            {
+                "error": false,
+                "message": config.error.api_key_not_allowed
+        })
+    }else{
+        ReportModel.updateReportModel(tableMembers, req.body.params, req.params.id)
+        .then((response) => MainController.validFunction(true, res, response, ''))
+        .catch((error) => MainController.validFunction(false, res, '', error))
+    }
 }
 
 exports.deleteReportController = (req, res) => {
-    ReportModel.deleteReportModel(tableMembers, req.params.id)
-    .then((response) => MainController.validFunction(true, res, response, ''))
-    .catch((error) => MainController.validFunction(false, res, '', error))
+    if(req.informationsUser === 'noapikey'){
+        res.status(401).json(
+            {
+                "error": false,
+                "message": config.error.api_key_not_allowed
+        })
+    }else{
+        ReportModel.deleteReportModel(tableMembers, req.params.id)
+        .then((response) => MainController.validFunction(true, res, response, ''))
+        .catch((error) => MainController.validFunction(false, res, '', error))
+    }
 }
 
 exports.countReportController = (req, res) => {

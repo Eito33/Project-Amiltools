@@ -1,7 +1,13 @@
 {
     "routeApi": "/api/v1/",
     "port": 8081,
-    "version": "1.0.0:002",
+    "version": "1.0.0:003",
+    "nbCaractToken": 50,
+    "nbCaractApi": 30,
+    "valueMinAdmin": 100,
+    "valueMinManager": 50,
+    "caractPossible": "AABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!$",
+    "notavailablefromupdate": ["team", "job", "role"],
     "error": {
         "mail": "This email is already used",
         "table": "The table does not exist",
@@ -12,7 +18,12 @@
         "notaddBugTracker": "Can not add bug...",
         "elementuse": "The element already exists",
         "passwordwrong": "Wrong Email or Bad password",
-        "missingparams": "Missing params"
+        "missingparams": "Missing params",
+        "api_key_invalid": "Your API KEY is invalid",
+        "api_key_not_exist": "Your API KEY does not exist",
+        "api_key_not_allowed": "You are not allowed to do this",
+        "api_key_not_generate": "Your api key was not generated",
+        "search_no_user": "No users were found"
     },
     "success": {
         "deleteitem": "Successfully deleted the item",

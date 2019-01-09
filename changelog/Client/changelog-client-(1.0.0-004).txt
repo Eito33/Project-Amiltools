@@ -1,0 +1,112 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 09/01/2019
+#BUILD : CLIENT : 1.0.0:004 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : USER COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    !!! Bonne Année 2019 a tous et a toutes !!!!
+    -> Pour cette mise à jour client on retrouve plusieurs profonds changements pour les rôles et la possibilité
+    d'appartenir maintenant a une team.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+
+    Role:
+        -> Les rôles ne sont maintenant plus cryptés mais directement en clair cependant ils ne sont plus accessible par les utilisateurs 
+        normaux. Le rôle qui était sauvegardé dans le session_storage a été supprimé.
+        -> Les rôles ont maintenant des valeurs.
+            Les points permettent de vérifier avec des valeurs si un utilisateur a accès ou non à une partie de l'application.
+            -> User : 25.
+            -> Manager : 50.
+            -> Admin : 100.
+
+    PopupUser :
+        -> handleChange :: Fonction qui permet de vérifier s'il y a eu un changement d'état.
+        -> checkPassword :: Fonction qui permet la modification de son mot de passe.
+        -> saveBiography :: Fonction qui permet la sauvegarde de sa nouvelle biographie en BDD.
+        -> savePassword :: Fonction qui permet la sauvegarde de sont nouveau mot de passe en BDD.
+        -> onClickSubmitUser :: Fonction qui gère le clique sur la sauvegarde des éléments editer du profil.
+
+    Connexion :
+        -> requestRole :: Fonction qui requête sur la route getRole afin de récupérer les informations et les mettre dans le reducer
+
+    SearchBar :
+        -> La barre de recherche est maintenant fonctionnelle.
+           Elle permet la recherche d'utilisateur inscrit.
+        -> Un minimum de 3 lettres est requis, et le containers SearchBar affiche les résultats.
+            -> constructor :: Le constructor fait une requête sur la recherche demandée.
+            -> renderAlertSearch :: Fonction qui permet le rendu des alerts de recherche.
+            -> renderRole :: Fonction qui permet le rendu des rôles dans la rechercher.
+            -> renderSearchResponse :: Fonction qui permet le rendu de la réponse.
+ Report :
+        -> DisplayButtonReport :: Fonction qui permet ou non d'ajouter les boutons sur la page report suivant si on a les droits
+   
+
+    User :
+        -> openEdit :: Fonction qui permet l'ouverture du popup d'edition
+        -> onClosePopup :: Fonction qui permet la fermeture du popup d'édition
+        -> displayRole :: Fonction qui permet d'afficher le rôle sur la page user
+        -> renderMarked :: Fonction qui permet le rendu du markdown
+        
+        -> Il est maintenant possible de mettre du markdown dans sa biographie.
+           Le rendu est automatiquement fait avec marked.
+        -> Il est maintenant possible de voir le profil des utilisateurs inscrit.
+           -> Soit en cliquant sur son prénom et nom directement sur un report.
+           -> Soit en le recherchant avec la barre de recherche.
+        -> Si on clique sur notre propre prénom et nom on est redirigé vers la page /user
+        -> Affichage de l'API KEY sur notre profil visible que par nous sur notre profil
+        -> Affichage de l'email sur le profil public pour les autres utilisateurs.
+
+    UserProfile :
+        -> Il est maintenant possible de voir le profil public des utilisateurs.
+            -> constructor :: Le constructor faire une requête pour récupérer les infos du profil visitée
+            -> componentDidMount :: Une fois le composant monté on requête pour récupérer les grades
+            -> getJob :: Fonction qui permet d'afficher notre Job
+            -> generateAPIKEY :: Fonction qui permet de générer une APIKEY
+            -> displayApiKey :: Fonction qui permet d'afficher l'APIKEY
+            -> handleChangeRole :: Fonction qui permet d'ajouter ou de supprimer un rôle a l'utilisateur
+            -> renderSelect :: Fonction qui fait un rendu du select
+            -> handleSelectOption :: Fonction qui vérifier s'il y a eu du changement dans le select
+            -> DisplayButtonAdmin :: Fonction qui permet d'afficher les boutons d'administation
+            -> renderReportMarked :: Fonction de rendu du markdown
+            -> supressApiKey :: Fonction qui supprime une api key
+
+    Team :
+        -> Ajout des teams, pour le moment elle ne sont qu'affichés sur le profil.
+        -> Par défaut une personne est attribuée à Niort.
+
+    Services :
+        Les services sont des fichiers JS qui connecté à redux et qui permettent via une class d'accéder ou de valider des données
+        -> Ajout des services.
+        -> verifRoleUser :: Services qui permet la sauvegarde du rôle de l'utilisateur et de vérifier sa valeur
+            -> getRole :: Fonction qui Renvoie le Role de l'utilisateur
+            -> getValue :: Fonction qui Renvoie la valeur du Rôle de l'utilisateur
+            -> get50Value :: Fonction qui teste si la valeur du rôle est supérieure ou égale à 50
+            -> get100Value :: Fonction qui teste si la valeur du rôle est supérieure ou égale à 100
+
+    Reducer :
+        -> getRoleReducer :: Reducer qui sauvegarde les informations de amil_role
+        -> getRoleActions :: Actions qui enregistrer les informations de amil_role dans son Reducer
+
+    Systéme Admin :
+        -> Les Administrateurs on maintenant la possibilité de générer une API KEY pour un utilisateur.
+        -> Les Administrateurs on maintenant la possibilité de modifier le rôle d'un utilisateur depuis son profil.
+
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    FIX -> CSS - Au niveau du titre de la Biographie dans le profil, il y a un petit espace en dessous.
+    CSS - Au niveau du profil utilisateur l'image et le nom et prénom sont trop haut.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

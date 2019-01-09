@@ -9,7 +9,10 @@ const initialState = {
         "password": '',
         "biographie": '',
         "job": '',
-        "grade": ''
+        "role": '',
+        "grade_value": 0,
+        "team": '',
+        "api_key": ''
     }
 }
 

@@ -24,6 +24,9 @@
     color: #23527c;
 }
 
+.titleBio>p{
+    margin: 0;
+}
 .titleBio{
     background-color: #f8f8f8;
     font-weight: 500;
@@ -36,16 +39,18 @@
     background-color: white;
     padding: 25px;
     color: black;
-    min-height: 200px;
+    min-height: 100px;
     border-left: 1px solid #e7e7e7;
     border-right: 1px solid #e7e7e7;
     border-bottom: 1px solid #e7e7e7;
     text-align: justify;
+    box-shadow: 5px 5px 5px #aaa;
 }
 
 .userBadge{
     float: right;
     padding: 5px;
+    margin-right: 15px;
 }
 
 .hrMargin{
@@ -54,4 +59,28 @@
 
 .userButton{
     margin-right: 15px;
+}
+
+.api_key_bold{
+    font-weight: bold;
+}
+
+.red{
+    color: #DC3545;
+    cursor: pointer;
+}
+
+.displayButtonAdmin{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.active{
+    background-color: #007BFF;
+    color: white;
+}
+
+#error_profile{
+    display: none;
 }

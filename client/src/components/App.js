@@ -12,6 +12,8 @@ import BugTracker from '../containers/BugTracker';
 import User from '../containers/User';
 import NotFound from './NotFound'
 import Connexion from '../containers/Connexion'
+import UserProfile from '../containers/UserProfile'
+import SearchBar from '../containers/SearchBar'
 
 
 //Guards
@@ -37,6 +39,8 @@ class App extends Component {
                 <Route exact path='/task' component={RequireisAuth(Task)} />
                 <Route exact path='/bugtracker' component={RequireisAuth(BugTracker)} />
                 <Route exact path='/user' component={RequireisAuth(User)} />
+                <Route exact path='/profile/:author' component={RequireisAuth(UserProfile)} />
+                <Route exact path='/search=:name' component={RequireisAuth(SearchBar)} />
                 <Route component={NotFound} />
               </Switch>
             </section>

@@ -4,6 +4,10 @@ import config from '../config/config.json'
 import PopupReport from './Popup/PopupReport'
 import marked from 'marked'
 
+import {Link} from 'react-router-dom'
+
+import VerifUserRole from '../services/verif_role_user'
+
 //Redux
 import { connect } from 'react-redux'
 import { getLastReportActions } from '../actions/index'
@@ -17,12 +21,14 @@ class Report extends Component{
         allReport: '',
         activePopup: '',
         openPopup: false,
+        VerifUserRole: new VerifUserRole()
     }
 
     //Fonction qui recuperer l'event et l'envoie a la fonction qui recupere le report
     handleSelectChange = event => {
         this.requestGetReport(event.target.value)
     }
+
     //Fonction qui envoie une requete pour recupérer le report demander et le met dans le reducer en fonction de lid
     requestGetReport(id){
         axios.get(config.URL_SERV_BEGGIN + config.URL_API_REST + 'report/' + id)
@@ -83,14 +89,28 @@ class Report extends Component{
             document.getElementById("alertReport").style.display = "block"
         })
     }
+
+    DisplayButtonReport(){
+        if(this.state.VerifUserRole.get50Value()){
+            return(
+                <Fragment>
+                    <button onClick={() => this.handleClick('new')} className="btn btn-outline-success my-2 my-sm-0" type="submit">New Report</button> 
+                    <button onClick={() => this.handleClick('edit')} className="btn btn-outline-warning my-2 my-sm-0" type="submit">Edit Report</button> 
+                    <button onClick={() => this.handleClick('delete')} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Delete Report</button>
+                </Fragment>
+            )
+        }
+    }
+
+
     render(){
         return(
             <Fragment>
                 <div className="menuReport">
                     <div className="menuReportButton">
-                        <button onClick={() => this.handleClick('new')} className="btn btn-outline-success my-2 my-sm-0" type="submit">New Report</button> 
-                        <button onClick={() => this.handleClick('edit')} className="btn btn-outline-warning my-2 my-sm-0" type="submit">Edit Report</button> 
-                        <button onClick={() => this.handleClick('delete')} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Delete Report</button>
+                        {
+                            this.DisplayButtonReport()
+                        }
                     </div>
                      <div className="menuReportSelect">
                         <select onChange={this.handleSelectChange} className="custom-select custom-select-lg mb-3">
@@ -109,13 +129,9 @@ class Report extends Component{
                             </div>
                             <div className="cardReportContent">
                                 <div className="contentReport" dangerouslySetInnerHTML={this.renderReportMarked(this.props.lastReportReducer.content)} />
-                                <div>by <span className='author'>{this.props.lastReportReducer.author}</span></div>
+                                <div>by <span className='author'><Link to={'/profile/' + this.props.lastReportReducer.author} >{this.props.lastReportReducer.author}</Link></span></div>
                             </div>
                         </div>
-                    </div>
-
-                    <div id="overlay">
-                        <p>jdizj</p>
                     </div>
                     {
                         //Display POPUP
@@ -127,7 +143,10 @@ class Report extends Component{
 }
 
 const mapStateToProps = (state) => {
-    return {lastReportReducer: state.lastReportReducer}
+    return {
+        lastReportReducer: state.lastReportReducer,
+        saveUserReducer: state.saveUserReducer
+    }
 }
 
 function mapDispatchToProps(dispatch) {

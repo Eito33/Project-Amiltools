@@ -7,6 +7,10 @@
 
 # changelog
 /changelog/NewChange.txt
+/changelog/Pre-Patch.txt
+/changelog/Client/newChangelog.txt
+/changelog/Server/newChangelog.txt
+
 
 # testing
 /coverage

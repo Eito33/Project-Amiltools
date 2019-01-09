@@ -22,7 +22,6 @@ class ReportBoard extends Component {
         axios.get(config.URL_SERV_BEGGIN + '/api/v1/report/find/lastreport')
             .then((response) => this.props.getLastReportActions(response.data.response[0]))
             .catch((err) => {
-                console.error(err)
                 document.getElementById("alertReport").style.display = 'block'
             })
     }
@@ -58,8 +57,8 @@ class ReportBoard extends Component {
                         </div>
                         <div className="cardReportContent">
                             <div className="contentReport" dangerouslySetInnerHTML={{__html: this.renderReportMarked()}}></div>
-                            <div><Link to="/report">Read More</Link>... </div>
-                            <div>by <span className='author'>{this.props.lastReportReducer.author}</span></div>
+                            <div><Link to="/report">Read More...</Link></div>
+                            <div>by <span className='author'><Link to={'/profile/' + this.props.lastReportReducer.author} >{this.props.lastReportReducer.author}</Link></span></div>
                         </div>
                     </div>
                 </section>

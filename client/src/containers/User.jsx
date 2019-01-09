@@ -1,6 +1,10 @@
 import React, {Component, Fragment} from 'react'
-
+import PopupUser from './Popup/PopupUser'
 import {Redirect} from 'react-router-dom'
+import marked from 'marked'
+
+//Services
+import VerifUserRole from '../services/verif_role_user'
 
 //Redux
 import { connect } from 'react-redux'
@@ -11,10 +15,25 @@ import '../styles/User.css'
 
 class User extends Component{
 
+    state = {
+        openPopup : false,
+        VerifUserRole: new VerifUserRole()
+    }
+
     getJob(){
         if(this.props.saveUserReducer.job === 'webdev'){
             return 'Developpeur Web'
         }
+    }
+
+    //Fonction qui ouvre le popup d'edition
+    openEdit = popup => {
+        this.setState({openPopup: popup})
+    }
+
+    //Fonction qui ferme le popup
+    onClosePopup = () => {
+        this.setState({ openPopup: false})
     }
 
     handleDeconnexion = event => {
@@ -25,26 +44,39 @@ class User extends Component{
         return <Redirect push to='/' />
     }
 
+    displayRole(){
+        return this.state.VerifUserRole.getRole()
+    }
+
+    renderReportMarked = report => {
+        if(report){
+            const __html = marked(report, { sanitize: true })
+            return { __html }
+        }
+    }
+
     render(){
         return(
             <Fragment>
-                <h2>User Profile</h2> 
+                <h2>User Profile</h2>
                 <p>
-                    <button className="userButton btn btn-outline-info my-2 my-sm-0" type="submit">Modifier</button>
-                    <button onClick={this.handleDeconnexion} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Déconnexion</button>
+                    <button onClick={() => this.openEdit(true)} className="userButton btn btn-outline-info my-2 my-sm-0" type="submit">Edit</button>
+                    <button onClick={this.handleDeconnexion} className="btn btn-outline-danger my-2 my-sm-0" type="submit">Log out</button>
                 </p>
                     <span className="userBadge badge badge-info">{this.getJob()}</span>
+                    <span className="userBadge badge badge-primary">{this.props.saveUserReducer.team}</span>
+                    <span className="userBadge badge badge-success">{this.displayRole()}</span>
                     <hr className="hrMargin" />
                     <div className="row">
                         <div className="cadreInformationsPrincipal col-lg-12">
                             <div className="avatar">
-                                <img src="http://image.noelshack.com/fichiers/2018/50/4/1544699046-avatar-commun.png" alt=""/>
+                                <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000" alt=""/>
                             </div>
                             <div className="informationsPrincipal">
                                 <p><span>{this.props.saveUserReducer.firstname} {this.props.saveUserReducer.lastname}</span></p>
                             </div>
                             <div className="informationsConnexion">
-                                <p>Vous etes connecter depuis X minutes</p>
+                                <p><span className="api_key_bold">API_KEY :</span> { this.props.saveUserReducer.api_key }</p>
                             </div>
                         </div>
                     </div>
@@ -55,10 +87,13 @@ class User extends Component{
                                 <p>Biographie</p>
                             </div>
                             <div className="contentBio">
-                                {this.props.saveUserReducer.biographie}
+                                <div className="contentReport" dangerouslySetInnerHTML={this.renderReportMarked(this.props.saveUserReducer.biographie)} />
                             </div>
                         </div>
                     </div>
+                    {
+                        this.state.openPopup && <PopupUser onClose={this.onClosePopup} />
+                    }
             </Fragment>
         )
     }

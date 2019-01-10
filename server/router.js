@@ -98,6 +98,7 @@ const UserController = require('./controllers/user_controller')
 const ReportController = require('./controllers/report_controller')
 const TaskController = require('./controllers/task_controller')
 const BugTrackerController = require('./controllers/bugtracker_controller')
+const CalendarController = require('./controllers/calendar_controller')
 
 //----------------------------------------------- MIDDLEWARE
 const mid = require('./middleware/mid_secure_auth')
@@ -190,6 +191,16 @@ module.exports = function(server){
         server.get(`${config.routeApi}bugtracker/count/all`, BugTrackerController.countBugTrackerController)
 
     //-----------------------------------------------------------------------------------------
+
+    //CALENDAR ROUTE
+        //Display Calendar
+        server.post(`${config.routeApi}calendar/getEvents`, CalendarController.getEventsController);
+        server.post(`${config.routeApi}calendar/setEvent`, CalendarController.addEventController);
+        server.delete(`${config.routeApi}calendar/delete`, CalendarController.removeEventController);
+
+    //-----------------------------------------------------------------------------------------
+
+
 
     //Default
     server.use((req, res) => {

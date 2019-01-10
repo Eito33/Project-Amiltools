@@ -1,0 +1,44 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT & CLEMENT BERTHOUIN
+#DATE : 10/01/2019
+#BUILD : CLIENT : 1.0.0:005 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : CALENDAR COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    -> Cette mise à jour apporte le module calendrier qui a été réaliser par Clément Berthouin.
+       Elle corrige également quelques bugs mineurs en BDD.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+
+    Calendar :
+        -> togglePopup :: Fonction qui permet d'afficher le popup.
+        -> getCalendarEvents :: Fonction qui permet d'afficher le calendrier.
+        -> addEvent :: Fonction qui permet l'ajout d'un evenement sur le calendrier.
+        -> removeEvent :: Fonction qui permet la suppression d'un evenement sur le calendrier.
+        -> handleSelectDate :: Fonction qui permet de sélectionner une date.
+        -> handleSelectEvent :: Fonction qui permet de sélectionner un événement.
+        -> renderContentPopup :: Fonction qui permet le rendu de contenu du Popup.
+        -> toggleCB :: Fonction qui permet de gèrer la checkbox.
+        -> renderCheckBox :: Fonction qui permet le rendu de la checkbox.
+        -> renderPopup :: Fonction qui permet le rendu du Popup.
+
+    PopupCalendar :
+        ->  Prends en paramètre des props pour afficher le bon popup calendar.
+
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    CSS - Au niveau du profil utilisateur l'image et le nom et prénom sont trop haut.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

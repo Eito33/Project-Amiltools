@@ -1,0 +1,39 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT & CLEMENT BERTHOUIN
+#DATE : 10/01/2019
+#BUILD : SERVER : 1.0.0:004 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : CALENDAR COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    -> Cette mise à jour serveur, apporte les routes, les controllers et les models concernant le calendrier.
+
+-----------------------------------------------------------------------------------------------
+
+# SERVER :
+
+    #Routes :
+        -> /api/v1/calendar/getEvents :: Route qui permet de recupérer la liste des événements
+        -> /api/v1/calendar/setEvent :: Route qui permet d'ajouter un événement.
+        -> /api/v1/calendar/delete :: Route qui permet de supprimer un événement.
+
+    #Controllers:
+        Calendar :
+            -> getEventsController :: Controller qui gère les données du calendrier.
+            -> addEventController :: Controller qui gère l'ajout d'un événement sur le calendrier.
+            -> removeEventController :: Controller qui gère la suppression d'un événement sur le calendrier.
+
+    #Models:
+        Calendar :
+            -> findCalendarEventsMode :: Model qui gère les données du calendrier.
+            -> addCalendarEventModel :: Model qui gère l'ajour d'un événement sur le calendrier.
+            -> deleteCalendarModel :: Model qui gère la suppression d'un événement sur le calendrier.
+
+
+-----------------------------------------------------------------------------------------------
+
+#################################### LAST VERSION ####################################

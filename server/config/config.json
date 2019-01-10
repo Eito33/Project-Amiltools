@@ -1,7 +1,7 @@
 {
     "routeApi": "/api/v1/",
     "port": 8081,
-    "version": "1.0.0:003",
+    "version": "1.0.0:004",
     "nbCaractToken": 50,
     "nbCaractApi": 30,
     "valueMinAdmin": 100,

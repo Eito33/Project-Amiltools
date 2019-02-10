@@ -1,0 +1,128 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 10/02/2019
+#BUILD : CLIENT : 1.0.0:006 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : BUGTRACKER COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    Ce build apporte plusieurs élement importants : 
+        -> BugTracker Component : Permet de signaler des bugs et de suivre leur avancée
+        -> SearchBar : Permet de rechercher diverses informations suivant la page où on est.
+        -> AmilAstuce : Affiche des astuces concernant Amiltone
+
+-----------------------------------------------------------------------------------------------
+
+#Client :
+
+    #BugTracker : 
+        #Informations:
+            -> Ajout du système de filtrage des bugs.
+            -> Ajout du clic sur un bug, le bug est affiché
+            -> Ajout du système de possibilité d'édition d'un bug 
+            -> Modification en profondeur du CSS
+
+        #Fonctions : 
+            #General:
+                -> convertDate() :: Fonction de conversion de la date
+                -> togglePopup() :: Fonction qui affiche ou enlève le popup et l'overlay
+
+
+            #Render:
+                -> renderBugTable() :: Fonction qui gère le rendu des bugs dans le tableau
+                -> renderPriority() :: Fonction qui fait le rendu des priorités dans le tableau
+                -> renderError() :: Fonction qui gère le rendu des erreurs
+                -> renderSuccess() :: Fonction qui gère le rendu des succès
+                -> renderPopup() :: Fonction qui gère le rendu du popup
+                
+            #ClickOn:
+                -> clickOnADD() :: Fonction qui gère le click sur ajouter un bug
+                -> clickOnBug() :: Fonction qui gère le click sur un bug
+            
+            #RequestSearch:
+                -> requestPriorityBug() :: Fonction qui modifie le css en place sur les boutons de filtrage pour les priorités
+                -> requestBugFilterPriority() :: Fonction qui effectue les recherches en fonction des options de filtrage
+                -> requestMyBug() :: Fonction qui Request les bugs de l'utilisateur
+                -> requestAllBug() :: Fonction qui request tous les bugs dans la BDD
+                -> requestCountAllBug() :: Fonction qui compte le nombre total de bug
+
+
+        #Popup
+            #Informations :
+                -> Component Dum qui récupére les bonnes props et affiche en conséquence les bonnes informations dans le popup bugtracker
+
+            #Fonctions :
+                -> renderGeneralBeforeComponentMount() :: Fonction qui fait un rendu général du composant
+
+                #General:
+                    -> renderMarked() :: Fonction de rendu du Markdown
+                    
+                #SendAxios:
+                    -> sendSearchUser() :: Fonction qui gère la recherche pour l'auto-complexion
+                    -> sendEditBug() :: Fonction qui édit un bug
+                    -> sendAddBug() :: Fonction qui ajoute un bug
+                    -> sendDeleteBug() :: Fonction qui supprime un bug
+                    -> handleChange() :: Fonction qui gère quand un champ change durant une édition
+                    -> handleChangeStateEdit() :: Fonction qui gère le changement de stateEdit
+                    -> clickOnArrow() :: Fonction qui affiche ou cache le contenu d'un bug
+                
+                #Render:
+                    -> renderPriority() :: Fonction qui gère le rendu de la priorité
+                    -> renderAutoCompleteAuthor() :: Fonction qui gère le rendu de l'auto-complexion
+                    -> renderAddBug() :: Fonction qui fait le rendu du contenu si on ajoute un bug
+                    -> renderEditBug() :: Fonction qui fait le rendu de la vue ou de l'edition de bug
+                    
+                #General Button
+                    -> renderButtonAdd() :: Fonction qui fait le rendu des boutons si on ajoute un bug
+                    -> renderButtonEdit() :: Fonction qui fait le rendu des boutons sur la vue et l'édition de bug 
+
+    
+    #SearchBar
+        #Informations :
+            -> Chaque application dispose maintenant de sa propre SearchBar.
+                La SearchBar fonction ainsi :
+                    -> this.typeSearch(this.props.match.params.typesearch)
+                    On envoie dans la fonction typeSearch le props du params récupérer en get
+
+                    -> La fonction typeSearch évalue le résultat avec un switch et appel la fonction demandé
+                    -> La fonction appelée effectue la recherche
+                    -> Puis elle enregistre dans le state renderResponse le render attendue
+                    -> Dans le render du component on appelle un nouveau composant RenderResponse
+                        -> Qui prend plusieurs props en paramètre.
+                        -> Celui-ci affiche via la fonction renderResponse les bonnes informations
+
+        #Functions :       
+            -> typeSearch() :: Fonction qui vérifie de quel type de recherche il s'agit et redirige vers la bonne fonction.
+            -> searchOnCalendar() :: Fonction qui effectue la recherche sur Calendar
+            -> searchOnReport() :: Fonction qui effectue la recherche sur Report
+            -> searchOnTask() :: Fonction qui effectue la recherche sur Task
+            -> searchOnBugTracker() :: Fonction qui effectue la recherche sur BugTracker
+            -> searchOnUser() :: Fonction qui effectue la recherche sur User
+            -> renderAlertSearch() :: Fonction qui affiche les erreurs de recherche
+
+    #AmilAstuce
+        -> componentDidMount() :: Fonction qui fait la requête pour charger les astuces
+	    -> randomCitation() :: Fonction qui choisit une astuce au hasard
+	    -> initAstuce() :: Fonction qui initialise les astuces
+
+
+# Bug :
+    CSS - Au niveau du profil utilisateur l'image et le nom et prénom sont trop haut.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+    CSS/JS - Sur les filtres du bugtracker les boutons ne repasse pas en outline une fois que l'on reclic dessus
+    JS - On obtient un bug si on fait deux recherches à la suite, on est redirigé sur NotFound, le bug est dû au location.pathname
+
+# TODO :
+    JS - Ajouter la possibilité d'archiver un bug
+    JS - Ajouter la possibilité de voir les bugs archiver
+    JS - Ajouter une pagination au Bugtracker Component
+    JS - Ajouter la possibilité de faire une recherche sur les task
+    JS - Ajouter un popup de validation de suppression de bug
+    
+#################################### LAST VERSION ####################################

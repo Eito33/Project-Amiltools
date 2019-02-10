@@ -15,7 +15,7 @@ class Home extends Component{
                 <CardBoard />
                 <hr />
                 <div className="alert alert-success" role="alert">
-                    <strong>Well done!</strong> You build is 1.0.0:005 - CALENDAR COMPONENT
+                    <strong>Well done!</strong> You build is 1.0.0:006 - BugTracker COMPONENT
                 </div>
                 <ReportBoard />
                 <BugTrackerBoard />

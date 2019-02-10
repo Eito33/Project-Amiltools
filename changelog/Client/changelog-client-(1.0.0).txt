@@ -1,0 +1,30 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 09/02/2019
+#BUILD : CLIENT : 1.0.0 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : FINAL BUILD
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    -> Cette mise à jour apporte le module calendrier qui a été réaliser par Clément Berthouin.
+       Elle corrige également quelques bugs mineurs en BDD.
+
+-----------------------------------------------------------------------------------------------
+
+# Client :
+
+
+
+-----------------------------------------------------------------------------------------------
+
+# Bug :
+    CSS - Au niveau du profil utilisateur l'image et le nom et prénom sont trop haut.
+    CSS - Au niveau des CardBoard les flèches de l'onglet view détails ne sont pas bien alignées.
+    CSS - Au niveau des CardBoard la séparation entre les deux onglets de la carte est marqué par l'ombre.
+    CSS - Au niveau du MenuLeft les flèches des onglets qui contient plus d'options se décalent quand on passe la souris dessus.
+
+#################################### LAST VERSION ####################################

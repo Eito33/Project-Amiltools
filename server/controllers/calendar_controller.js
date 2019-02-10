@@ -1,11 +1,11 @@
-const Calendar = require('../models/calendar_model')
+const CalendarModel = require('../models/calendar_model')
 const table = 'amil_calendar_events'
 const MainController = require('./main_controller')
 
 exports.getEventsController = (req,res,next) => {
-    Calendar.findCalendarEventsModel(table, req.body.idUser, "idUser")
+    CalendarModel.findCalendarEventsModel(table, req.body.idUser, "idUser")
     .then((response) => {
-        Calendar.findCalendarEventsModel(table, 1, "forAll")
+        CalendarModel.findCalendarEventsModel(table, 1, "forAll")
         .then((response2) => {
             for(event of response2){
                 for(event2 of response){
@@ -22,13 +22,21 @@ exports.getEventsController = (req,res,next) => {
 }
 
 exports.addEventController = (req,res,next) => {
-    Calendar.addCalendarEventModel(table, req.body.event)
+    CalendarModel.addCalendarEventModel(table, req.body.event)
     .then((response) => MainController.validFunction(true, res, response, ''))
     .catch((error) => MainController.validFunction(false, res, '', error));
 }
 
 exports.removeEventController = (req,res,next) => {
-    Calendar.deleteCalendarModel(table, req.body.id)
+    CalendarModel.deleteCalendarModel(table, req.body.id)
     .then((response) => MainController.validFunction(true, res, response, ''))
     .catch((error) => MainController.validFunction(false, res, '', error));
+}
+
+exports.searchCalendarController = (req, res) => {
+    const params = req.params.request.split(' ')
+    const idUser = req.params.idUser
+    CalendarModel.searchCalendarModel(table, params[0], idUser)
+    .then((response) => MainController.validFunction(true, res, response, ''))
+    .catch((error) => MainController.validFunction(false, res, '', error))
 }

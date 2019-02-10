@@ -14,6 +14,26 @@ module.exports = {
         })
     },
 
+    //Fonction qui recherche un utilisateur en BDD
+    searchReportModel(table, params, params2 = ''){
+        return new Promise((resolve, reject) => {
+            console.log('------------')
+            console.log('Request searchUser : ' + `SELECT id, author, title, create_at from ${table} WHERE LOWER(title) LIKE LOWER('%${params}% %${params2}%') OR LOWER(content) LIKE LOWER('%${params}% %${params2}%')`)
+            console.log('------------')
+            DB.query(`SELECT id, author, title, create_at from ${table} WHERE LOWER(title) LIKE LOWER('%${params}% %${params2}%') OR LOWER(content) LIKE LOWER('%${params}% %${params2}%')`,
+            (err, result) => {
+                if(err) reject(err)
+                else {
+                    if(result.length >= 1){
+                        resolve(result)
+                    }else{
+                        reject(config.error.search_no_user)
+                    }
+                }
+            })
+        })
+    },
+
     findOneReportModel(table, req, search){
         return new Promise((resolve, reject) => {
             Model.findMainModel(table, req)

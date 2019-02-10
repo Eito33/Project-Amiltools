@@ -8,7 +8,7 @@ import marked from 'marked'
 import '../styles/User.css'
 import VerifUserRole from '../services/verif_role_user';
 
-//TODO: Si le profil user n'est pas trouver faire le catch
+//TODO: Coder le catch avec l'alert dans le cas ou aucun profil user n'est pas trouver
 
 
 class UserProfile extends Component{

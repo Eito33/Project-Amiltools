@@ -102,9 +102,9 @@ findUserProfileModel(table, req){
 searchUserModel(table, params, params2 = ''){
     return new Promise((resolve, reject) => {
         console.log('------------')
-        console.log('Request searchUser : ' + `SELECT firstname, lastname, role from ${table} WHERE CONCAT(lastname," ",firstname) LIKE '%${params}% %${params2}%' OR CONCAT(firstname," ",lastname) LIKE '%${params}% %${params2}%'`)
+        console.log('Request searchUser : ' + `SELECT id, firstname, lastname, role from ${table} WHERE CONCAT(lastname," ",firstname) LIKE '%${params}% %${params2}%' OR CONCAT(firstname," ",lastname) LIKE '%${params}% %${params2}%'`)
         console.log('------------')
-        DB.query(`SELECT firstname, lastname, role from ${table} WHERE CONCAT(lastname," ",firstname) LIKE '%${params}% %${params2}%' OR CONCAT(firstname," ",lastname) LIKE '%${params}% %${params2}%'`,
+        DB.query(`SELECT id, firstname, lastname, role from ${table} WHERE CONCAT(lastname," ",firstname) LIKE '%${params}% %${params2}%' OR CONCAT(firstname," ",lastname) LIKE '%${params}% %${params2}%'`,
         (err, result) => {
             if(err) reject(err)
             else {

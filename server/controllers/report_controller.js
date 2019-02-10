@@ -74,3 +74,10 @@ exports.findLastReportController = (req, res) => {
     .then((response) => MainController.validFunction(true, res, response, ''))
     .catch((error) => MainController.validFunction(false, res, '', error))
 }
+
+exports.searchReportController = (req, res) => {
+    const params = req.params.request.split(' ')
+    ReportModel.searchReportModel(tableMembers, params[0], params[1])
+    .then((response) => MainController.validFunction(true, res, response, ''))
+    .catch((error) => MainController.validFunction(false, res, '', error))
+}

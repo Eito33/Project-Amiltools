@@ -1,0 +1,55 @@
+.menuDisplayBug>button{
+    margin-right: 10px;
+}
+
+.disabledButton{
+    opacity: .65;
+}
+
+.buttonBugTracker{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.white{
+    color: white
+}
+
+.badgeTechno {
+    padding: 1px 9px 2px;
+    font-size: 12.025px;
+    font-weight: bold;
+    white-space: nowrap;
+    color: #ffffff;
+    background-color: #999999;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+tr{
+    cursor: pointer;
+}
+
+.contentBugTracker{
+    border: 1px solid rgba(208, 214, 219, 0.5);
+    padding: 25px;
+    border-radius: 5px;
+    width: 100%;
+    overflow: scroll;
+    max-height: 400px;
+}
+
+#errorBugTracker{
+    display: none;
+}
+
+#successBugTracker{
+    display: none;
+}
+
+.compteurBug{
+    font-style: italic;
+    padding: 15px;
+}

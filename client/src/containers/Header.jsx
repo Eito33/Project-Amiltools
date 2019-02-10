@@ -4,14 +4,41 @@ import { withRouter } from 'react-router-dom'
 
 import '../styles/Header.css'
 
+
 class Header extends Component{
 
-    state={
-        search: ''
+    state = {
+        "search" : ""
     }
 
+    componentDidUpdate(){
+
+        //A l'update de l'url on affiche le bon placeholder
+        switch(this.props.location.pathname){
+            case '/bugtracker':
+                document.getElementById('searchbar').placeholder = "Search an Bug..."
+            break
+
+            case '/task':
+                document.getElementById('searchbar').placeholder = "Search an Task..."
+            break
+
+            case '/report':
+                document.getElementById('searchbar').placeholder = "Search an Report..."
+            break
+
+            case '/calendar':
+                document.getElementById('searchbar').placeholder = "Search an Calendar..."
+            break
+
+            default:
+                document.getElementById('searchbar').placeholder = "Search an User..."
+            break
+        }
+    }
 
     clickSearchBar = event => {
+
         event.preventDefault()
         const lengthSearch = this.state.search.length
         if(lengthSearch <= 2){
@@ -20,7 +47,14 @@ class Header extends Component{
             document.getElementById('searchbar').classList.add('placeholderColorWhite')
             document.getElementById('searchbar').placeholder ='3 characters minimum'
         }else{
-            this.props.history.push('/search=' + this.state.search)
+            this.setState({search: ''})
+            document.getElementById('searchbar').value = ""
+
+            if(this.props.location.pathname === '/'){
+                this.props.history.push('/search=' + this.state.search + '/typesearch=' + this.props.location.pathname.replace('/', 'user'))
+            }else{
+                this.props.history.push('/search=' + this.state.search + '/typesearch=' + this.props.location.pathname.replace('/', ''))
+            }
         }
     }
 
@@ -41,8 +75,8 @@ class Header extends Component{
                         <form className="form-inline">
                             <a target='_blank' href="https://devgabinrimbault.gitbook.io/amiltool-s/"><i className="nav-account-icon fas fa-book"></i></a>
                             <Link to='/user'><i className="nav-account-icon fas fa-user"></i></Link>
-                            <input onChange={(e) => this.changeSearch(e)} className="form-control mr-sm-2" type="search" placeholder="Search an user..." id="searchbar" aria-label="Search" />
-                            <button onClick={(e) => this.clickSearchBar(e)} className="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                            <input onChange={(e) => this.changeSearch(e)} className="form-control mr-sm-2" type="search" placeholder="Search an User..." id="searchbar" aria-label="Search" />
+                            <button onClick={(e) => this.clickSearchBar(e)} className="btn btn-outline-info my-2 my-sm-0" id='buttonsearchbar' type="submit">Search</button>
                         </form>
                     </nav>
                 </header>
@@ -51,4 +85,5 @@ class Header extends Component{
     }
 }
 
-export default withRouter(Header);
+
+export default (withRouter(Header))

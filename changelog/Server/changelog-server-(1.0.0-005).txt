@@ -1,0 +1,35 @@
+#NAME : AmilTools
+#AUTHOR : GABIN RIMBAULT
+#DATE : 10/02/2019
+#BUILD : SERVER : 1.0.0:005 - DEV
+
+#################################### LAST VERSION ####################################
+
+BUILD : BUGTRACKER COMPONENT
+
+-----------------------------------------------------------------------------------------------
+
+# Général :
+    Ce build apporte plusieurs élement importants : 
+        -> BugTracker Component : Permet de signaler des bugs et de suivre leur avancée
+        -> SearchBar : Permet de rechercher diverses informations suivant la page où on est.
+        -> AmilAstuce : Affiche des astuces concernant Amiltone
+
+-----------------------------------------------------------------------------------------------
+
+# SERVER :
+
+    #Routes :
+        -> /api/v1/bugtracker/author/:id_user :: Route qui permet de rechercher tous les bugs lié à un user
+        -> /api/v1/bugtracker/priority/:priority/:id :: Route qui permet de rechercher tous les bugs liés à une priotité
+
+# Models:
+
+        MainModel: 
+			-> findMainModelWithInnerJoin() :: Fonction qui permet de rechercher dans deux tables
+            -> findMainModelWith2ConditionsInnerJoin () :: Fonction qui permet de rechercher dans deux tables avec deux conditions
+
+
+-----------------------------------------------------------------------------------------------
+
+#################################### LAST VERSION ####################################

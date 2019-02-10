@@ -74,6 +74,48 @@ findAllMainModel(table, search = '*'){
     })
 },
 
+findMainModelWithInnerJoin(tableBase, tableSearch, searchTableBase = '1', searchTableSearch = '1', search = 'id', content = '1', field = '*'){
+    return new Promise((resolve, reject) => {
+        this.verifTable(tableBase)
+        this.verifTable(tableSearch)
+        .then((response) => {
+            console.log('------------')
+            console.log('Request findMainModelWithInnerJoin : ' + `SELECT * FROM ${tableBase} INNER JOIN ${tableSearch} ON ${tableBase}.${searchTableBase} = ${tableSearch}.${searchTableSearch} WHERE ${search} = '${content}'`)
+            console.log('------------')
+            DB.query(`SELECT ${field} FROM ${tableBase} INNER JOIN ${tableSearch} ON ${tableBase}.${searchTableBase} = ${tableSearch}.${searchTableSearch} WHERE ${search} = '${content}'`,
+            (err, result) => {
+                if(err) reject(err)
+                else {
+                    if(result.length >= 1) resolve(result)
+                    else reject('Probleme durant la requete')
+                }
+            })
+        })
+        .catch((error) => reject(error))
+    })
+},
+
+findMainModelWith2ConditionsInnerJoin(tableBase, tableSearch, conditionTwoSearch, conditionTwoContent, searchTableBase = '1', searchTableSearch = '1', search = 'id', content = '1', field = '*'){
+    return new Promise((resolve, reject) => {
+        this.verifTable(tableBase)
+        this.verifTable(tableSearch)
+        .then((response) => {
+            console.log('------------')
+            console.log('Request findMainModelWith2ConditionsInnerJoin : ' + `SELECT ${field} FROM ${tableBase} INNER JOIN ${tableSearch} ON ${tableBase}.${searchTableBase} = ${tableSearch}.${searchTableSearch} WHERE ${search} = '${content}' AND ${conditionTwoSearch}='${conditionTwoContent}'`)
+            console.log('------------')
+            DB.query(`SELECT ${field} FROM ${tableBase} INNER JOIN ${tableSearch} ON ${tableBase}.${searchTableBase} = ${tableSearch}.${searchTableSearch} WHERE ${search} = '${content}' AND ${conditionTwoSearch}='${conditionTwoContent}'`,
+            (err, result) => {
+                if(err) reject(err)
+                else {
+                    if(result.length >= 1) resolve(result)
+                    else reject('Probleme durant la requete')
+                }
+            })
+        })
+        .catch((error) => reject(error))
+    })
+},
+
 //Fonction qui permet de recherche une informations
 findMainModel(table, content = '1', search= 'id', field = '*'){
     return new Promise((resolve, reject) => {
@@ -105,6 +147,23 @@ countMainModel(table){
             console.log('Request countMainModel : ' + `SELECT COUNT(*) AS count FROM ${table}`);
             console.log('------------');
             DB.query(`SELECT COUNT(*) AS count FROM ${table}`, (err, result) => {
+                if(err) reject(err)
+                else resolve(result[0].count)
+            })
+        })
+        .catch((error) => reject(error))
+    })
+},
+
+//Fonction qui permet de compter un nombre d'information depuis un ID
+countMainModelWithID(table, search='id', content='1'){
+    return new Promise((resolve, reject) => {
+        this.verifTable(table)
+        .then((response) => {
+            console.log('------------');
+            console.log('Request countMainModel : ' + `SELECT COUNT(*) AS count FROM ${table} WHERE ${search}= '${content}'`);
+            console.log('------------');
+            DB.query(`SELECT COUNT(*) AS count FROM ${table} WHERE ${search}= '${content}'`, (err, result) => {
                 if(err) reject(err)
                 else resolve(result[0].count)
             })

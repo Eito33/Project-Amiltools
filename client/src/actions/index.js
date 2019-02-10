@@ -35,3 +35,12 @@ export function getLastReportActions(Params){
         payload: Params
     }
 }
+
+export const RECEIVE_BUG = 'RECEIVE_BUG'
+
+export function receiveBugActions(Params){
+    return {
+        type: RECEIVE_BUG,
+        payload: Params
+    }
+}

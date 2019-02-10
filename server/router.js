@@ -99,6 +99,7 @@ const ReportController = require('./controllers/report_controller')
 const TaskController = require('./controllers/task_controller')
 const BugTrackerController = require('./controllers/bugtracker_controller')
 const CalendarController = require('./controllers/calendar_controller')
+const AstuceController = require('./controllers/astuce_controller')
 
 //----------------------------------------------- MIDDLEWARE
 const mid = require('./middleware/mid_secure_auth')
@@ -150,6 +151,7 @@ module.exports = function(server){
         server.get(`${config.routeApi}report`, ReportController.findAllReportController)
         server.get(`${config.routeApi}report/:id`, ReportController.findOneReportController)
         server.get(`${config.routeApi}report/find/lastreport`, ReportController.findLastReportController)
+        server.get(`${config.routeApi}searchReport/:request`, ReportController.searchReportController)
 
         //Control Report
         server.post(`${config.routeApi}report/add/:api_key`, mid.secure_auth_api, mid.secure_manager_api, ReportController.addReportController)
@@ -180,7 +182,12 @@ module.exports = function(server){
     //BUGTRACKER ROUTE
         //Display Bug
         server.get(`${config.routeApi}bugtracker`, BugTrackerController.findAllBugTrackerController)
+        server.get(`${config.routeApi}bugtracker/author/:id_user`, BugTrackerController.findAllBugTrackerWhereIDController)
         server.get(`${config.routeApi}bugtracker/:id`, BugTrackerController.findOneBugTrackerController)
+        server.get(`${config.routeApi}searchBugTracker/:idUser/:request`, BugTrackerController.searchBugTrackerController)
+
+        server.get(`${config.routeApi}bugtracker/priority/:priority`, BugTrackerController.requestPriorityBugTrackerController)
+        server.get(`${config.routeApi}bugtracker/priority/:priority/:id`, BugTrackerController.requestPriorityWithIDBugTrackerController)
 
         //Control Bug
         server.post(`${config.routeApi}bugtracker/add`, BugTrackerController.addBugTrackerController)
@@ -189,6 +196,7 @@ module.exports = function(server){
 
         //Options
         server.get(`${config.routeApi}bugtracker/count/all`, BugTrackerController.countBugTrackerController)
+        server.get(`${config.routeApi}bugtracker/count/:id`, BugTrackerController.countBugTrackerWithIDController)
 
     //-----------------------------------------------------------------------------------------
 
@@ -197,8 +205,12 @@ module.exports = function(server){
         server.post(`${config.routeApi}calendar/getEvents`, CalendarController.getEventsController);
         server.post(`${config.routeApi}calendar/setEvent`, CalendarController.addEventController);
         server.delete(`${config.routeApi}calendar/delete`, CalendarController.removeEventController);
+        server.get(`${config.routeApi}searchCalendar/:idUser/:request`, CalendarController.searchCalendarController)
 
     //-----------------------------------------------------------------------------------------
+
+    //Other
+        server.get(`${config.routeApi}astuce/all`, AstuceController.findAllAstucesController);
 
 
 

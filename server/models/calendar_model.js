@@ -48,7 +48,27 @@ module.exports = {
             .then((response) => resolve(response))
             .catch((error) => reject(error))
         })
-    }
+    },
+
+    //Fonction qui recherche un utilisateur en BDD
+    searchCalendarModel(table, params, idUser){
+        return new Promise((resolve, reject) => {
+            console.log('------------')
+            console.log('Request searchUser : ' + `SELECT id, title, start, end from ${table} WHERE LOWER(title) LIKE LOWER('%${params}%') AND idUser = ${idUser}`)
+            console.log('------------')
+            DB.query(`SELECT id, title, start, end from ${table} WHERE LOWER(title) LIKE LOWER('%${params}%') AND idUser = ${idUser}`,
+            (err, result) => {
+                if(err) reject(err)
+                else {
+                    if(result.length >= 1){
+                        resolve(result)
+                    }else{
+                        reject(config.error.search_no_user)
+                    }
+                }
+            })
+        })
+    },
 
 
 }

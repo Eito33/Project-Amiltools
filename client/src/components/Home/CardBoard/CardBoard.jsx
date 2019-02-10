@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import config from '../../../config/config.json'
+import {connect} from 'react-redux'
 
 import './CardBoard.css'
 
@@ -19,13 +20,13 @@ class CardBoard extends Component{
         .then((response) => this.setState({countReport: response.data.response}))
         .catch((error) => this.setState({countReport: 0}))
 
-        //Count Bug
+        //Count Task
         axios.get(config.URL_SERV_BEGGIN + '/api/v1/task/count/all') 
         .then((response) => this.setState({countTask: response.data.response}))
         .catch((error) => this.setState({countTask: 0}))
 
-        //Count Task
-        axios.get(config.URL_SERV_BEGGIN + '/api/v1/bugtracker/count/all') 
+        //Count Bug
+        axios.get(config.URL_SERV_BEGGIN + '/api/v1/bugtracker/count/' + this.props.saveUserReducer.id) 
         .then((response) => this.setState({countBug: response.data.response}))
         .catch((error) => this.setState({countBug: 0}))
     }
@@ -68,4 +69,8 @@ class CardBoard extends Component{
     }
 }
 
-export default CardBoard;
+const mapStateToProps = (state) => {
+    return {saveUserReducer: state.saveUserReducer}
+}
+
+export default connect(mapStateToProps)(CardBoard);

@@ -1,0 +1,35 @@
+footer{
+    background-color: #343A40;
+
+    width: 100%;
+    min-height: 35px;
+    line-height: 35px;
+    color: white;
+}
+
+.footerContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.QUOTE{
+    font-size: 0.5em;
+    position: relative;
+    top: -10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.text-astuce{
+    font-style: italic;
+    font-size: 0.9em;
+    color: transparent;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    transition: all 0.5s;
+}
+
+.text-astuce:hover{
+    color:#fff;
+    text-shadow:none;
+}
